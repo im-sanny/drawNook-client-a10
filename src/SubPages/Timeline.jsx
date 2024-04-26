@@ -1,9 +1,9 @@
-import React from "react";
+/* eslint-disable react/no-unescaped-entities */
 
 const Timeline = () => {
   return (
     <div>
-      <section className="dark:bg-gray-100 dark:text-gray-800 mb-5">
+      <section className="dark:bg-gray-100 dark:text-gray-800 mb-5 rounded-md">
         <h1
           data-aos="zoom-in"
           data-aos-duration="1000"

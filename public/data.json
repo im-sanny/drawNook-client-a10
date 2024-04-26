@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Mountain View Canvas",
+        "description": "A breathtaking depiction of majestic mountains against a serene sky.",
+        "imageURL": "https://i.ibb.co/pRNqVD5/ef5bff15-5301-417a-9819-78a99cdd7aff.jpg",
+        "price": 100,
+        "rating": 4.5,
+        "customization": false,
+        "processingTime": "2-3 weeks",
+        "stockStatus": "In stock"
+    },
+    {
+        "name": "Pencil Sketch Portrait",
+        "description": "Detailed pencil sketch capturing the essence of the subject's personality.",
+        "imageURL": "https://i.ibb.co/6mQ3kS1/4e479058-78ef-47a1-8785-67f70f197d23.jpg",
+        "price": 80,
+        "rating": 4.2,
+        "customization": true,
+        "processingTime": "1 week",
+        "stockStatus": "In stock"
+    },
+    {
+        "name": "Animal Watercolor Portrait",
+        "description": "Charming watercolor portrait of a beloved pet or wildlife.",
+        "imageURL": "https://i.ibb.co/921ZMGf/1cdc237a-0f01-4cad-85aa-02ff75902340.jpg",
+        "price": 100,
+        "rating": 4.4,
+        "customization": false,
+        "processingTime": "2 weeks",
+        "stockStatus": "In stock"
+    },
+    {
+        "name": "Abstract Oil Painting",
+        "description": "Dynamic abstract composition with bold brushstrokes and vibrant colors.",
+        "imageURL": "https://i.ibb.co/RPcXyNq/246170ea-56b0-4719-b34c-c88c7c3fa0a6.jpg",
+        "price": 130,
+        "rating": 4.5,
+        "customization": false,
+        "processingTime": "1 week",
+        "stockStatus": "In stock"
+    },
+    {
+        "name": "Architectural Charcoal Drawing",
+        "description": "Detailed charcoal drawing of architectural landmarks and structures.",
+        "imageURL": "https://i.ibb.co/x13jPbv/6c0302bc-792a-47c8-84a1-36c22d9d7f8c.jpg",
+        "price": 100,
+        "rating": 4.6,
+        "customization": true,
+        "processingTime": "2 weeks",
+        "stockStatus": "Made to Order"
+    },
+    {
+        "name": "Superhero Cartoon Design",
+        "description": "Dynamic superhero design inspired by classic comic book heroes.",
+        "imageURL": "https://i.ibb.co/PT9Kj9z/0985840f-a280-4b6f-923e-4a8564536565.jpg",
+        "price": 90,
+        "rating": 4.2,
+        "customization": true,
+        "processingTime": "2 weeks",
+        "stockStatus": "Made to Order"
+    }
+]

@@ -1,4 +1,5 @@
 import Banner from "../SubPages/Banner";
+import Reviews from "../SubPages/Reviews";
 
 const Home = () => {
   return (
@@ -6,6 +7,10 @@ const Home = () => {
       {/* banner */}
       <div>
         <Banner></Banner>
+      </div>
+      {/* review */}
+      <div>
+        <Reviews></Reviews>
       </div>
     </>
   );

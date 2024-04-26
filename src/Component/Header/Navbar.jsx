@@ -68,7 +68,7 @@ const Navbar = () => {
           <div className="dropdown dropdown-end">
             <button className="m-1 btn btn-ghost font-bold">
               {" "}
-              <NavLink to={""}>Login</NavLink>{" "}
+              <NavLink to={"/login"}>Login</NavLink>{" "}
             </button>
             <ul className="p-2 lg:hidden shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-">
               <li>

@@ -50,16 +50,14 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
-        
+
         <div className="navbar-end gap-1">
-          <div className="tooltip tooltip-left" data-tip='name'>
-          
-          <div tabIndex={0}
-                  className="btn  btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
-              <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+          <div className="tooltip tooltip-left" data-tip="name">
+            <div tabIndex={0} className="btn  btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+              </div>
             </div>
-          </div>
           </div>
           <div>
             <button className="btn btn-ghost hidden sm:inline-block lg:inline-block md:inline-block font-bold">

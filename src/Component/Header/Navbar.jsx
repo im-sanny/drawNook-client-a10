@@ -61,7 +61,7 @@ const Navbar = () => {
           </div>
           <div>
             <button className="btn btn-ghost hidden sm:inline-block lg:inline-block md:inline-block font-bold">
-              Registration
+            <NavLink to={"/register"}>Registration</NavLink>
             </button>
           </div>
           <div>{/* <button className="btn">Login</button> */}</div>
@@ -72,7 +72,7 @@ const Navbar = () => {
             </button>
             <ul className="p-2 lg:hidden shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-">
               <li>
-                <NavLink to={""}>Registration</NavLink>
+                <NavLink to={"/register"}>Registration</NavLink>
               </li>
             </ul>
           </div>

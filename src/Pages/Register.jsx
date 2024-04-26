@@ -1,12 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
-/* eslint-disable no-mixed-spaces-and-tabs */
-import { Link } from "react-router-dom";
 import { FaArrowCircleLeft } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-const Login = () => {
+const Register = () => {
   return (
     <>
-      <div className="lg:mx-0 mx-2">
+      <div
+        className="lg:mx-0 mx-2">
         <div className="flex md:justify-between items-center justify-center flex-wrap gap-4 mx-auto max-w-6xl">
           <p
             onClick={() => "navigate"("/")}
@@ -18,38 +18,52 @@ const Login = () => {
           </p>
           <img className="h-[100px]" src={"logo"} alt="" />
           <div>
-            Not a member?
+            Already a member?
             <Link
               className="px-3 ml-3 py-2 bg-[#38c483] hover:bg-green-700 rounded text-white font-semibold"
-              to="/register"
+              to="/login"
             >
-              Registration
+              Login
             </Link>
           </div>
         </div>
 
         <div className="border shadow-lg mt-3 max-w-6xl mx-auto mb-10 rounded-lg">
-          <div className="w-full flex">
+          <div className="w-full flex p-2">
             <div
               className="w-full  bg-gray-400 hidden lg:block  bg-no-repeat  lg:w-1/2  rounded-l-lg "
               style={{
-                background: `url(${"https://i.ibb.co/D1b68pr/Log-In-1.png"})`,
+                background: `url(${"https://i.ibb.co/g3www1v/reshot-illustration-user-register-illustration-45-EL2-CXH8-D.png"})`,
                 backgroundSize: "100% 100%",
                 backgroundOrigin: "content-box",
               }}
-            ></div>
+            >	
+			</div>
 
             <div className="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
               <div className=" p-5 ">
                 <div className="pb-8">
-                  <p className="text-3xl font-bold mb-2">Login in DrawNook.</p>
+                  <p className="text-3xl font-bold mb-2">Registration in DrawNook.</p>
                   <p className="font-semibold text-black/60">
                     Please enter your information's below
                   </p>
                 </div>
-                <div className="divider">Login with e-mail</div>
+                <div className="divider">To register, fill the form properly</div>
 
                 <form onSubmit={"handleLogin"} className="space-y-3 w-full ">
+                  <div>
+                    <fieldset className="border border-solid border-gray-300 p-3 w-full rounded">
+                      <legend className=" font-medium text-black/60">
+                        Name
+                      </legend>
+                      <input
+                        type="name"
+                        name="name"
+                        placeholder="name"
+                        className="px-4 w-full focus:outline-0"
+                      />
+                    </fieldset>
+                  </div>
                   <div>
                     <fieldset className="border border-solid border-gray-300 p-3 w-full rounded">
                       <legend className=" font-medium text-black/60">
@@ -58,7 +72,7 @@ const Login = () => {
                       <input
                         type="email"
                         name="email"
-                        placeholder="Email"
+                        placeholder="email"
                         className="px-4 w-full focus:outline-0"
                       />
                     </fieldset>
@@ -76,13 +90,26 @@ const Login = () => {
                       />
                     </fieldset>
                   </div>
+                  <div>
+                    <fieldset className="border border-solid border-gray-300 p-3 w-full rounded">
+                      <legend className=" font-medium text-black/60">
+                        PhotoURL
+                      </legend>
+                      <input
+                        type="photoURL"
+                        name="photoURL"
+                        placeholder="photoURL"
+                        className="px-4 w-full focus:outline-0"
+                      />
+                    </fieldset>
+                  </div>
                   <div className="flex justify-center">
                     <button className="px-3 py-2 bg-[#38c483] w-full hover:bg-green-600 rounded text-white font-semibold">
-                      Login
+                      Register
                     </button>
                   </div>
                 </form>
-                <div className="divider">or</div>
+                {/* <div className="divider">or</div>
                 <div className="flex items-center flex-wrap md:flex-nowrap gap-4 mb-4">
                   <button
                     onClick={() => "handleGoogleSignIn"()}
@@ -108,7 +135,7 @@ const Login = () => {
                         />
                       </svg>
                     </div>
-                    <span className="ml-4">Login with Google</span>
+                    <span className="ml-4">Sign In with Google</span>
                   </button>
 
                   <button
@@ -123,9 +150,9 @@ const Login = () => {
                         />
                       </svg>
                     </div>
-                    <span className="ml-4">Login In with GitHub</span>
+                    <span className="ml-4">Sign In with GitHub</span>
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -135,4 +162,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

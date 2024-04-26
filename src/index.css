@@ -1,3 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+/* Apply fonts to specific elements */
+body {
+  font-family: 'Playfair Display', serif; /* Default font */
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', serif; /* Apply Playfair Display to specific elements */
+}
+
+.font-roboto {
+  font-family: 'Roboto', sans-serif; /* Apply Roboto to specific elements */
+}
+
+.font-montserrat {
+    font-family: "Montserrat", sans-serif;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

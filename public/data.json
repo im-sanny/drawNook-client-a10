@@ -20,7 +20,7 @@
         "stockStatus": "In stock"
     },
     {
-        "name": "Animal Watercolor Portrait",
+        "name": "Watercolor Portrait",
         "description": "Charming watercolor portrait of a beloved pet or wildlife.",
         "imageURL": "https://i.ibb.co/921ZMGf/1cdc237a-0f01-4cad-85aa-02ff75902340.jpg",
         "price": 100,
@@ -30,7 +30,7 @@
         "stockStatus": "In stock"
     },
     {
-        "name": "Abstract Oil Painting",
+        "name": "Oil Painting",
         "description": "Dynamic abstract composition with bold brushstrokes and vibrant colors.",
         "imageURL": "https://i.ibb.co/RPcXyNq/246170ea-56b0-4719-b34c-c88c7c3fa0a6.jpg",
         "price": 130,
@@ -40,7 +40,7 @@
         "stockStatus": "In stock"
     },
     {
-        "name": "Architectural Charcoal Drawing",
+        "name": "Charcoal Drawing",
         "description": "Detailed charcoal drawing of architectural landmarks and structures.",
         "imageURL": "https://i.ibb.co/x13jPbv/6c0302bc-792a-47c8-84a1-36c22d9d7f8c.jpg",
         "price": 100,
@@ -50,7 +50,7 @@
         "stockStatus": "Made to Order"
     },
     {
-        "name": "Superhero Cartoon Design",
+        "name": "Cartoon Design",
         "description": "Dynamic superhero design inspired by classic comic book heroes.",
         "imageURL": "https://i.ibb.co/PT9Kj9z/0985840f-a280-4b6f-923e-4a8564536565.jpg",
         "price": 90,

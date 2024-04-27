@@ -6,6 +6,7 @@ import Home from "../Pages/Home";
 import ErrorPage from "../Pages/ErrorPage";
 import AllArtsAndCraft from "../Pages/AllArtsAndCraft";
 import AddCraft from "../Pages/AddCraft";
+import MyArtAndCraftList from "../Pages/MyArtAndCraftList";
 
 const Route = createBrowserRouter([
   {
@@ -34,7 +35,8 @@ const Route = createBrowserRouter([
         element:<AddCraft></AddCraft>,
        },
        {
-        
+        path:'/myArt',
+        element:<MyArtAndCraftList></MyArtAndCraftList>,
        }
     ]
   },

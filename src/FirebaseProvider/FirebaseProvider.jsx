@@ -1,4 +1,5 @@
 import {
+    GithubAuthProvider,
     GoogleAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -12,10 +13,11 @@ export const AuthContext = createContext(null);
 
 //social auth providers
 const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
 const FirebaseProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-
+console.log(user);
 
   //create user
   const createUser = (email, password) => {
@@ -32,6 +34,11 @@ const FirebaseProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider)
   }
 
+  //github login
+  const githubLogin = () => {
+    return signInWithPopup(auth, githubProvider);
+  };
+
   //observer
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -45,7 +52,9 @@ const FirebaseProvider = ({ children }) => {
     createUser,
     signInUser,
     googleLogin,
+    githubLogin,
     
+
 
   }
   return (

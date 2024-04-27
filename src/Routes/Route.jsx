@@ -5,6 +5,7 @@ import Register from "../Pages/Register";
 import Home from "../Pages/Home";
 import ErrorPage from "../Pages/ErrorPage";
 import AllArtsAndCraft from "../Pages/AllArtsAndCraft";
+import AddCraft from "../Pages/AddCraft";
 
 const Route = createBrowserRouter([
   {
@@ -27,7 +28,14 @@ const Route = createBrowserRouter([
         {
           path:'/allArt',
           element:<AllArtsAndCraft></AllArtsAndCraft>,
-        }
+        },
+       {
+        path:'/addCraft',
+        element:<AddCraft></AddCraft>,
+       },
+       {
+        
+       }
     ]
   },
 ]);

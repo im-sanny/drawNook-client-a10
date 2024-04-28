@@ -94,15 +94,15 @@ const Banner = () => {
             </SwiperSlide>
             <SwiperSlide>
               <div
-                className="slide slide3 rounded-lg"
+                className="slide slide1 rounded-lg"
                 style={{
                   backgroundImage: `url(' https://i.ibb.co/3vyZKjk/9e762c05-bb5a-4651-87b6-94e7e65bca7a.jpg')`,
                   backgroundSize: "100% auto",
                   backgroundPosition: "center",
                   backgroundRepeat: "no-repeat",
-                  height: "500px",
+                  height: "500px", 
                 }}
-              >             
+              >
                 <div
                   data-aos="zoom-in"
                   data-aos-duration="1000"

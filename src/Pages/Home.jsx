@@ -7,6 +7,8 @@ import Timeline from "../SubPages/Timeline";
 import { baseURL } from "../hooks/url";
 import { useEffect, useState } from "react";
 import { DNA } from "react-loader-spinner";
+import ArtCraftCategory from "../SubPages/ArtCraftCategory";
+import { FaPaintbrush } from "react-icons/fa6";
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
@@ -69,6 +71,27 @@ const Home = () => {
             <CraftItems key={craftItem._id} craftItem={craftItem} />
           ))}
         </div>
+      </>
+
+      <>
+      <div className="text-center md:text-left my-10">
+          <p className="text-lg font-semibold text-pink-600 inline-block rounded py-1 px-2">
+            <div className="flex items-center gap-2 text-1xl">
+              <span className="bg-yellow-200 rounded-full text-pink-600 p-2">
+                <FaPaintbrush size={30} />
+              </span>
+              Drawing and Painting!
+            </div>
+          </p>
+          <p className="text-[32px] lg:text-[40px] font-semibold mb-3">
+            Drawing and Painting section
+          </p>
+        </div>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 lg:mx-0 mx-5 grid-cols-1 gap-5 lg:my-10">
+        {arts.map((art) => (
+          <ArtCraftCategory key={art._id} art={art}></ArtCraftCategory>
+        ))}
+      </div>
       </>
 
       {/* feature */}

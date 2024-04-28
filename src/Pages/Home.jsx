@@ -51,6 +51,27 @@ const Home = () => {
             Craft items section
           </p>
         </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 lg:mx-0 mx-5 grid-cols-1 gap-5 lg:my-10">
+          {arts.map((art) => (
+            <ArtCraftCategory key={art._id} art={art}></ArtCraftCategory>
+          ))}
+        </div>
+      </>
+      {/* instrument */}
+      <>
+        <div className="text-center md:text-left my-10">
+          <p className="text-lg font-semibold text-pink-600 inline-block rounded py-1 px-2">
+            <div className="flex items-center gap-2 text-1xl">
+              <span className="bg-yellow-200 rounded-full text-pink-600 p-2">
+                <FaPaintbrush size={30} />
+              </span>
+              Drawing Instrument's!
+            </div>
+          </p>
+          <p className="text-[32px] lg:text-[40px] font-semibold mb-3">
+            Instrument for Paining and drawing
+          </p>
+        </div>
         {/* grid grid-cols-5 gap-4  dark:bg-[#0F172A] */}
         <div className=" grid grid-cols-2 md:grid-cols-4 sm:grid-cols-3  xl:grid-cols-5 gap-5 mt-10 w-full mb-10">
           {loading && (
@@ -71,27 +92,6 @@ const Home = () => {
             <CraftItems key={craftItem._id} craftItem={craftItem} />
           ))}
         </div>
-      </>
-
-      <>
-      <div className="text-center md:text-left my-10">
-          <p className="text-lg font-semibold text-pink-600 inline-block rounded py-1 px-2">
-            <div className="flex items-center gap-2 text-1xl">
-              <span className="bg-yellow-200 rounded-full text-pink-600 p-2">
-                <FaPaintbrush size={30} />
-              </span>
-              Drawing and Painting!
-            </div>
-          </p>
-          <p className="text-[32px] lg:text-[40px] font-semibold mb-3">
-            Drawing and Painting section
-          </p>
-        </div>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 lg:mx-0 mx-5 grid-cols-1 gap-5 lg:my-10">
-        {arts.map((art) => (
-          <ArtCraftCategory key={art._id} art={art}></ArtCraftCategory>
-        ))}
-      </div>
       </>
 
       {/* feature */}

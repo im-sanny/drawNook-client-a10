@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/no-unknown-property */
 import { Card, CardHeader, Typography } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 

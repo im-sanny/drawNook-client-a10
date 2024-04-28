@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "../FirebaseProvider/FirebaseProvider";
 import { useForm } from "react-hook-form";
 import SocialLogin from "../SubPages/SocialLogin";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { signInUser } = useContext(AuthContext);
@@ -25,14 +26,23 @@ const Login = () => {
   const onSubmit = (data) => {
     const { email, password } = data;
 
-
     signInUser(email, password)
       .then((result) => {
         if (result.user) {
+          Swal.fire({
+            icon: "success",
+            title: "Login Successful",
+            text: "Welcome back!",
+          });
           navigate(form);
         }
       })
       .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Login Failed",
+          text: "Invalid email or password",
+        });
         console.log(error);
       });
   };

@@ -3,7 +3,7 @@ import { FaArrowCircleLeft } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../hooks/useAuth";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 const Register = () => {
   const { createUser } = useAuth();
@@ -12,6 +12,8 @@ const Register = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
+    reset,
   } = useForm();
 
   //navigation system
@@ -19,14 +21,37 @@ const Register = () => {
   const location = useLocation();
   const form = location?.state || "/";
 
-  const onSubmit = (data) => {
-    const { email, password } = data;
-    createUser(email, password)
-    .then((result) => {
-      if (result.user) {
-        navigate(form);
-      }
-    });
+  const onSubmit = async (data) => {
+    const { email, password, username } = data;
+
+    if (password.length < 6) {
+      setError("password", {
+        type: "manual",
+        message: "Password should be at least 6 characters or longer",
+      });
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      setError("password", {
+        type: "manual",
+        message: "Your password should have at least one uppercase character",
+      });
+      return;
+    } else if (!/[a-z]/.test(password)) {
+      setError("password", {
+        type: "manual",
+        message: "Your password should have at least one lowercase character",
+      });
+      return;
+    }
+
+    try {
+      await createUser(email, password, username);
+      toast.success("Registration successful!");
+      navigate(form);
+      reset();
+    } catch (error) {
+      toast.error("Registration failed. Please try again.");
+    }
   };
 
   return (
@@ -127,7 +152,7 @@ const Register = () => {
                       />
                     </fieldset>
                     {errors.password && (
-                      <p className="text-red-500">Password is required</p>
+                      <p className="text-red-500">{errors.password.message}</p>
                     )}
                   </div>
                   <div>
@@ -157,6 +182,7 @@ const Register = () => {
           </div>
         </div>
       </div>
+      <Toaster />
     </>
   );
 };

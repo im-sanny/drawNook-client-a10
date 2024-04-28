@@ -1,10 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import { FaArrowCircleLeft } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../hooks/useAuth";
-import { AuthContext } from "../FirebaseProvider/FirebaseProvider";
-import { useContext } from "react";
 import toast from "react-hot-toast";
 
 const Register = () => {
@@ -16,14 +14,19 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    const {email, password} = data
-    createUser(email, password)
-    .then(result => {
-      console.log(result);
-    })
+  //navigation system
+  const navigate = useNavigate();
+  const location = useLocation();
+  const form = location?.state || "/";
 
-    
+  const onSubmit = (data) => {
+    const { email, password } = data;
+    createUser(email, password)
+    .then((result) => {
+      if (result.user) {
+        navigate(form);
+      }
+    });
   };
 
   return (

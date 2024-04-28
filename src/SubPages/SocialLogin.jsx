@@ -1,12 +1,27 @@
+import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 const SocialLogin = () => {
-    const {googleLogin} = useAuth()
+  const { googleLogin, githubLogin } = useAuth();
+
+  //navigation system
+  const navigate = useNavigate();
+  const location = useLocation();
+  const form = location?.state || "/";
+
+  const handleSocialLogin = (socialProvider) => {
+    socialProvider()
+    .then((result) => {
+      if (result.user) {
+        navigate(form);
+      }
+    });
+  };
   return (
     <div>
       <div className="flex items-center flex-wrap md:flex-nowrap gap-4 mb-4">
         <button
-          onClick={() => googleLogin()}
+          onClick={() => handleSocialLogin(googleLogin)}
           className="w-full max-w-md font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline"
         >
           <div className="bg-white p-2 rounded-full">
@@ -33,7 +48,7 @@ const SocialLogin = () => {
         </button>
 
         <button
-          onClick={() => "handleGithubSignIn"()}
+          onClick={() => handleSocialLogin(githubLogin)}
           className="w-full max-w-md font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline"
         >
           <div className="bg-white p-1 rounded-full">

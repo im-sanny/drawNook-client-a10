@@ -1,6 +1,9 @@
 import { NavLink } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
+  const {logout, user} = useAuth()
+
   const navLinks = (
     <>
       <li className="font-bold">
@@ -52,31 +55,39 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end gap-1">
-          <div className="tooltip tooltip-left" data-tip="name">
-            <div tabIndex={0} className="btn  btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-              </div>
-            </div>
-          </div>
+      {!user ? ( // If user is not logged in
+        <>
           <div>
             <button className="btn btn-ghost hidden sm:inline-block lg:inline-block md:inline-block font-bold">
-            <NavLink to={"/register"}>Registration</NavLink>
+              <NavLink to="/register">Registration</NavLink>
             </button>
           </div>
-          <div>{/* <button className="btn">Login</button> */}</div>
           <div className="dropdown dropdown-end">
             <button className="m-1 btn btn-ghost font-bold">
-              {" "}
-              <NavLink to={"/login"}>Login</NavLink>{" "}
+              <NavLink to="/login">Login</NavLink>
             </button>
             <ul className="p-2 lg:hidden shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-">
               <li>
-                <NavLink to={"/register"}>Registration</NavLink>
+                <NavLink to="/register">Registration</NavLink>
               </li>
             </ul>
           </div>
-        </div>
+        </>
+      ) : ( // If user is logged in
+        <>
+          <div className="tooltip tooltip-left" data-tip={user.displayName}>
+            <div tabIndex={0} className="btn  btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img src={user.photoURL} alt="User Avatar" />
+              </div>
+            </div>
+          </div>
+          <button className="btn btn-ghost font-bold" onClick={logout}>
+            Log out
+          </button>
+        </>
+      )}
+    </div>
       </div>
     </>
   );

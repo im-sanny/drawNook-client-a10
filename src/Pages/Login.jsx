@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaArrowCircleLeft } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../FirebaseProvider/FirebaseProvider";
@@ -16,12 +16,21 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
+  //navigation system
+  const navigate = useNavigate();
+  const location = useLocation();
+  const form = location?.state || "/";
+
+  //handle login
   const onSubmit = (data) => {
     const { email, password } = data;
 
+
     signInUser(email, password)
       .then((result) => {
-        console.log(result);
+        if (result.user) {
+          navigate(form);
+        }
       })
       .catch((error) => {
         console.log(error);

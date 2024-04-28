@@ -28,17 +28,8 @@ const Route = createBrowserRouter([
             <Details></Details>
           </ProtectedRoute>
         ),
-        loader: () => fetch("http://localhost:5000/arts")
+        loader: () => fetch(`${baseURL}/arts`)
       },
-      // {
-      //   path: "/cardDetails/:id",
-      //   element: (
-      //     <PrivateRoute>
-      //       <CardDetails></CardDetails>
-      //     </PrivateRoute>
-      //   ),
-      //   loader: () => fetch("/data.json"),
-      // },
       {
         path: "/register",
         element: <Register></Register>,

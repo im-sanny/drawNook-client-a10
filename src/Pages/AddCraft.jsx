@@ -12,7 +12,18 @@ const AddCraft = () => {
     const price = form.price.value;
     const time = form.time.value;
     const rating = form.rating.value;
-    const allForm = { name, itemName, subcategory, customization, description,email, image, price, time, rating };
+    const allForm = {
+      name,
+      itemName,
+      subcategory,
+      customization,
+      description,
+      email,
+      image,
+      price,
+      time,
+      rating,
+    };
     console.log(allForm);
   };
 
@@ -120,20 +131,6 @@ const AddCraft = () => {
                   <option value="In stock">In stock</option>
                   <option value="Made to Order">Made to Order</option>
                 </select>
-
-                <label
-                  className="block mt-4 mb-2 dark:text-white"
-                  htmlFor="description"
-                >
-                  Description
-                </label>
-                <input
-                  className="w-full p-2 border rounded-md focus:outline-[#FF497C]"
-                  type="text"
-                  placeholder="Enter Description"
-                  id="description"
-                  name="description"
-                />
               </div>
               {/* Right side */}
               <div className="flex-1">
@@ -204,6 +201,21 @@ const AddCraft = () => {
                   name="rating"
                 />
               </div>
+            </div>
+            <div>
+              <label
+                className="block mt-4 mb-2 dark:text-white"
+                htmlFor="description"
+              >
+                Description
+              </label>
+              <input
+                className="w-full p-4 border rounded-md focus:outline-[#FF497C]"
+                type="text"
+                placeholder="Enter Description"
+                id="description"
+                name="description"
+              />
             </div>
 
             <input

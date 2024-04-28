@@ -1,8 +1,15 @@
 import { NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { useState } from "react";
 
 const Navbar = () => {
-  const {logout, user} = useAuth()
+  const { logout, user } = useAuth();
+
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
 
   const navLinks = (
     <>
@@ -55,39 +62,55 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end gap-1">
-      {!user ? ( // If user is not logged in
-        <>
-          <div>
-            <button className="btn btn-ghost hidden sm:inline-block lg:inline-block md:inline-block font-bold">
-              <NavLink to="/register">Registration</NavLink>
-            </button>
-          </div>
-          <div className="dropdown dropdown-end">
-            <button className="m-1 btn btn-ghost font-bold">
-              <NavLink to="/login">Login</NavLink>
-            </button>
-            <ul className="p-2 lg:hidden shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-">
-              <li>
-                <NavLink to="/register">Registration</NavLink>
-              </li>
-            </ul>
-          </div>
-        </>
-      ) : ( // If user is logged in
-        <>
-          <div className="tooltip tooltip-left" data-tip={user.displayName}>
-            <div tabIndex={0} className="btn  btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <img src={user.photoURL} alt="User Avatar" />
+          <h1>darkmode</h1>
+          {!user ? ( // If user is not logged in
+            <>
+              <div>
+                <button className="btn btn-ghost hidden sm:inline-block lg:inline-block md:inline-block font-bold">
+                  <NavLink to="/register">Registration</NavLink>
+                </button>
               </div>
+              <div className="dropdown dropdown-end">
+                <button className="m-1 btn btn-ghost font-bold">
+                  <NavLink to="/login">Login</NavLink>
+                </button>
+                <ul className="p-2 lg:hidden shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-">
+                  <li>
+                    <NavLink to="/register">Registration</NavLink>
+                  </li>
+                </ul>
+              </div>
+            </>
+          ) : (
+            // If user is logged in
+            <div className="relative">
+              <div className="tooltip tooltip-left" onClick={toggleDropdown}>
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn btn-ghost btn-circle avatar"
+                >
+                  <div className="w-10 rounded-full">
+                    <img src={user.photoURL} alt="User Avatar" />
+                  </div>
+                </div>
+              </div>
+              {/* Profile dropdown menu */}
+              {isDropdownOpen && (
+                <ul className="menu menu-sm dropdown-content mt-3 z-[10] p-2 shadow bg-base-100 rounded-box w-36 absolute right-0">
+                  {/* Username */}
+                  <li className="font-bold">{user.displayName}</li>
+                  {/* Logout option */}
+                  <li className="font-bold">
+                    <button className="btn btn-ghost" onClick={logout}>
+                      Log out
+                    </button>
+                  </li>
+                </ul>
+              )}
             </div>
-          </div>
-          <button className="btn btn-ghost font-bold" onClick={logout}>
-            Log out
-          </button>
-        </>
-      )}
-    </div>
+          )}
+        </div>
       </div>
     </>
   );

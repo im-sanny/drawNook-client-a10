@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 
 const AddCraft = () => {
@@ -38,6 +39,13 @@ const AddCraft = () => {
     })
     .then(res => res.json())
     .then(data => {
+      if (data?.insertedId) {
+        Swal.fire({
+          icon: "success",
+          title: "Craft Added",
+          text: "Your craft has been successfully added!",
+        });
+      }
       console.log(data);
     })
     console.log(allForm);

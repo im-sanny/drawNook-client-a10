@@ -1,83 +1,100 @@
-import { useState, useEffect } from "react";
-// import { getMyArtAndCrafts } from "./api"; // You need to implement an API function to fetch the user's arts & crafts data
+import { useEffect, useState } from "react";
+import useAuth from "../hooks/useAuth";
+import { Link } from "react-router-dom";
 
 const MyArtAndCraftList = () => {
-  const [artsAndCrafts, setArtsAndCrafts] = useState([]);
-  const [filterCustomization, setFilterCustomization] = useState("all"); // State for filtering based on customization
+  const { user } = useAuth() || {};
+  const [items, setItems] = useState([]);
+  const [filterValue, setFilterValue] = useState("all"); // Default value for filter
 
-//   useEffect(() => {
-//     // Fetch the user's arts & crafts data
-//     const fetchData = async () => {
-//       const data = await getMyArtAndCrafts(); // Implement this function to fetch data from the backend
-//       setArtsAndCrafts(data);
-//     };
+  useEffect(() => {
+    fetch(`http://localhost:5000/myCraft/${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Data from server:", data); // Debug logging
+        setItems(data);
+      });
+  }, [user]);
 
-//     fetchData();
-//   }, []);
-
-  // Function to handle filter change
   const handleFilterChange = (e) => {
-    setFilterCustomization(e.target.value);
+    setFilterValue(e.target.value);
   };
 
-  // Filter the arts & crafts based on the selected customization option
-  const filteredArtsAndCrafts = artsAndCrafts.filter((item) => {
-    if (filterCustomization === "all") {
-      return true;
-    } else {
-      return item.customization === filterCustomization;
-    }
-  });
+  const filteredItems =
+    filterValue === "all"
+      ? items
+      : items.filter((item) => {
+          if (filterValue === "yes") {
+            return item.customization === true;
+          } else if (filterValue === "no") {
+            return item.customization === false;
+          } else {
+            return true;
+          }
+        });
+
+  console.log("Filter value:", filterValue);
+  console.log("Filtered items:", filteredItems);
 
   return (
-    <div>
-      {/* Dropdown for filtering */}
-      <div className="my-4 flex justify-center">
-        <label htmlFor="customizationFilter">Filter by Customization:</label>
+    <>
+      {/* Filter dropdown */}
+      <div className="mb-4 flex justify-center my-4">
+        <div className="bg-base-200 p-4 rounded-lg">
+
+        <label htmlFor="filter" className="mr-2 text-gray-700">
+          Filter by Customization:
+        </label>
         <select
-          id="customizationFilter"
-          value={filterCustomization}
+          id="filter"
+          value={filterValue}
           onChange={handleFilterChange}
-          className="ml-2 p-2 border rounded-md focus:outline-[#FF497C]"
+          className="border border-gray-300 rounded-md px-4 py-1 focus:outline-none focus:border-blue-500"
         >
           <option value="all">All</option>
           <option value="yes">Yes</option>
           <option value="no">No</option>
         </select>
+        </div>
       </div>
 
-      {/* Display art & craft cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {filteredArtsAndCrafts.map((item) => (
-          <div key={item.id} className="border p-4">
-            {/* Display card information */}
-            <img src={item.image} alt={item.item_name} className="mb-2" />
-            <p>
-              <strong>Item Name:</strong> {item.item_name}
-            </p>
-            <p>
-              <strong>Price:</strong> {item.price}
-            </p>
-            <p>
-              <strong>Rating:</strong> {item.rating}
-            </p>
-            <p>
-              <strong>Customization:</strong> {item.customization}
-            </p>
-            <p>
-              <strong>Stock Status:</strong> {item.stockStatus}
-            </p>
-            {/* Update and Delete buttons */}
-            <button className="bg-blue-500 text-white px-4 py-2 rounded mr-2">
-              Update
-            </button>
-            <button className="bg-red-500 text-white px-4 py-2 rounded">
-              Delete
-            </button>
-          </div>
-        ))}
+      {/* List of items */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-10">
+        {filteredItems.length > 0 ? (
+          filteredItems.map((item) => (
+            <div key={item._id} className="bg-white shadow-md rounded-lg p-4">
+              <img
+                src={item.imageURL}
+                alt={item.name}
+                className="w-full h-56 object-cover mb-4 rounded-md"
+              />
+              <h1 className="text-xl font-semibold">{item.itemName}</h1>
+              <div className="flex justify-between">
+                <p className="text-gray-600 mb-2">Price: ${item.price}</p>
+                <p className="text-gray-600 mb-2">Rating: {item.rating}</p>
+              </div>
+              <div className="flex justify-between">
+                <p className="text-gray-600 mb-2">
+                  Customization: {item.customization === "yes" ? "Yes" : "No"}
+                </p>
+                <p className="text-gray-600 mb-2">
+                  Stock Status: {item.status}
+                </p>
+              </div>
+              <div className="space-y-2">
+                <Link to={"/updateCraft"}>
+
+                <button className="btn w-full">Update</button> 
+                </Link>
+                <button className="btn w-full">Delete</button>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p>No items found</p>
+        )}
       </div>
-    </div>
+    </>
   );
 };
 

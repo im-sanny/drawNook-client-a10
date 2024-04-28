@@ -10,6 +10,7 @@ import MyArtAndCraftList from "../Pages/MyArtAndCraftList";
 import ProtectedRoute from "./ProtectedRoute";
 import Details from "../SubPages/Details";
 import { baseURL } from "../hooks/url";
+import UpdateCraft from "../Pages/UpdateCraft";
 
 const Route = createBrowserRouter([
   {
@@ -58,6 +59,14 @@ const Route = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      {
+        path:"/updateCraft",
+        element:(
+          <ProtectedRoute>
+            <UpdateCraft></UpdateCraft>
+          </ProtectedRoute>
+        )
+      }
     ],
   },
 ]);

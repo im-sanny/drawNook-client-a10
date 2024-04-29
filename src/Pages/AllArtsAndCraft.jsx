@@ -1,55 +1,65 @@
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Typography,
-  Button,
-} from "@material-tailwind/react";
+import { useLoaderData } from "react-router-dom";
 
 const AllArtsAndCraft = () => {
+  const loadedUser = useLoaderData();
   return (
-    <>
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 dark:bg-gray-100 dark:text-gray-800 shadow-md">
-    <Card className="w-96">
-      <CardHeader shadow={false} floated={false} className="h-96">
-        <img
-          src="https://images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80"
-          alt="card-image"
-          className="h-full w-full object-cover"
-        />
-      </CardHeader>
-      <CardBody>
-        <div className="mb-2 flex items-center justify-between">
-          <Typography color="blue-gray" className="font-medium ">
-            Apple AirPods
-          </Typography>
-          <Typography  className="font-medium ">
-            $95.00
-          </Typography>
+    <div>
+      <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800">
+        <h2 className="mb-4 text-2xl font-semibold text-purple-600 leading-tight">
+          Arts & Craft List
+        </h2>
+        <div className="overflow-x-auto">
+          <table className="min-w-full text-xs">
+            <colgroup>
+              <col />
+              <col />
+              <col />
+              <col />
+              <col />
+              <col className="w-24" />
+            </colgroup>
+            <thead className="dark:bg-gray-300">
+              <tr className="text-left">
+                <th className="p-3">UserId #</th>
+                <th className="p-3">Name</th>
+                <th className="p-3">Item Name</th>
+                <th className="p-3">Category Name</th>
+                <th className="p-3 text-right">Price</th>
+                <th className="p-3">Crafts & Arts</th>
+              </tr>
+            </thead>
+            <tbody>
+              {loadedUser.map((user) => (
+                <tr key={user._id} className="border-b border-opacity-20 dark:border-gray-300 dark:bg-gray-50">
+                  <td className="p-3">
+                    <p>{user._id}</p>
+                  </td>
+                  <td className="p-3">
+                    <p>{user.name}</p>
+                  </td>
+                  <td className="p-3">
+                    <p>14 Jan 2022</p>
+                    <p className="dark:text-gray-600">Friday</p>
+                  </td>
+                  <td className="p-3">
+                    <p>01 Feb 2022</p>
+                    <p className="dark:text-gray-600">Tuesday</p>
+                  </td>
+                  <td className="p-3 text-right">
+                    <p>$15,792</p>
+                  </td>
+                  <td className="p-3 text-right">
+                    <span className="px-3 btn btn-sm py-1 font-semibold rounded-md dark:bg-violet-600 dark:text-gray-50">
+                      <span>View Details</span>
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-        <Typography
-          variant="small"
-          
-          className="font-normal opacity-75 "
-        >
-          With plenty of talk and listen time, voice-activated Siri access,
-          and an available wireless charging case.
-        </Typography>
-      </CardBody>
-      <CardFooter className="pt-0">
-        <Button
-          ripple={false}
-          fullWidth={true}
-          className="bg-blue-gray-900/10 text-blue-gray-900  shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
-        >
-          Add to Cart
-        </Button>
-      </CardFooter>
-    </Card>
-  </div>
-</>
-
+      </div>
+    </div>
   );
 };
 

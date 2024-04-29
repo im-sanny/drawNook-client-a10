@@ -52,6 +52,7 @@ const Route = createBrowserRouter([
       {
         path: "/allArt",
         element: <AllArtsAndCraft></AllArtsAndCraft>,
+        loader: () => fetch(`${baseURL}/user`)
       },
       {
         path: "/addCraft",

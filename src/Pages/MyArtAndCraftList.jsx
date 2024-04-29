@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const MyArtAndCraftList = () => {
   const { user } = useAuth() || {};
   const [items, setItems] = useState([]);
+  const [control, setControl] = useState(false)
   const [filterValue, setFilterValue] = useState("all"); // Default value for filter
 
   useEffect(() => {
@@ -13,8 +14,19 @@ const MyArtAndCraftList = () => {
       .then((data) => {
         setItems(data);
       });
-  }, [user]);
+  }, [user, control]);
 
+  const handleDelete = (id) => {
+    fetch(`http://localhost:5000/delete/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          setControl(!control)
+        }
+      });
+  };
 
   const handleFilterChange = (e) => {
     setFilterValue(e.target.value);
@@ -81,7 +93,12 @@ const MyArtAndCraftList = () => {
                 <Link to={`/updateCraft/${item._id}`}>
                   <button className="btn w-full">Update</button>
                 </Link>
-                <button className="btn w-full">Delete</button>
+                <button
+                  onClick={() => handleDelete(item._id)}
+                  className="btn w-full"
+                >
+                  Delete
+                </button>
               </div>
             </div>
           ))

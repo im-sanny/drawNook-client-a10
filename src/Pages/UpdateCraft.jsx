@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-// import { useHistory } from 'react-router-dom';
 
 const UpdateCraft = () => {
   const { id } = useParams();
@@ -15,39 +14,23 @@ const UpdateCraft = () => {
         console.log(data);
       });
   }, [id]);
-  const [formData, setFormData] = useState({
-    image: "",
-    itemName: "",
-    subcategoryName: "",
-    description: "",
-    price: "",
-    rating: "",
-    customization: "",
-    processingTime: "",
-    stockStatus: "",
-  });
-
-  
 
   const handleUpdate = (event) => {
     event.preventDefault();
-    
+
     const name = event.target.name.value;
     const itemName = event.target.itemName.value;
     const price = event.target.price.value;
-    const info ={name, itemName, price}
+    const info = { name, itemName, price };
     fetch(`http://localhost:5000/updateArt/${id}`, {
-        method:"PUT",
-        headers:{"Content-type" : "application/json" },
-      body: JSON.stringify(info)
+      method: "PUT",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(info),
     })
-    .then(res => res.json())
-    .then(data => {
-        console.log(data)
-    })
-    // Send update request to the backend
-    // Show success message using toast or SweetAlert
-    // Redirect to the previous page or a confirmation page
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   };
 
   return (
@@ -94,14 +77,13 @@ const UpdateCraft = () => {
           defaultValue={art.price}
         />
 
-
         {/* Add more input fields for other data points */}
 
         <input
-            className="px-4 w-full py-2 mt-4 rounded hover:bg-blue-400 bg-blue-600 duration-200 text-white cursor-pointer font-semibold"
-            type="submit"
-            value="Update Art"
-          />
+          className="px-4 w-full py-2 mt-4 rounded hover:bg-blue-400 bg-blue-600 duration-200 text-white cursor-pointer font-semibold"
+          type="submit"
+          value="Update Art"
+        />
       </form>
     </div>
   );

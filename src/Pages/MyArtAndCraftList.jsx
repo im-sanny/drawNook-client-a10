@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const MyArtAndCraftList = () => {
   const { user } = useAuth() || {};
   const [items, setItems] = useState([]);
-  const [control, setControl] = useState(false)
+  const [control, setControl] = useState(false);
   const [filterValue, setFilterValue] = useState("all"); // Default value for filter
 
   useEffect(() => {
@@ -17,15 +18,32 @@ const MyArtAndCraftList = () => {
   }, [user, control]);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/delete/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.deletedCount > 0) {
-          setControl(!control)
-        }
-      });
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this item!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/delete/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              setControl(!control);
+            }
+          });
+        Swal.fire(
+          'Deleted!',
+          'Your item has been deleted.',
+          'success'
+        );
+      }
+    });
   };
 
   const handleFilterChange = (e) => {

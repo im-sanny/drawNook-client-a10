@@ -11,10 +11,10 @@ const MyArtAndCraftList = () => {
     fetch(`http://localhost:5000/myCraft/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log("Data from server:", data); // Debug logging
         setItems(data);
       });
   }, [user]);
+
 
   const handleFilterChange = (e) => {
     setFilterValue(e.target.value);
@@ -33,28 +33,24 @@ const MyArtAndCraftList = () => {
           }
         });
 
-  console.log("Filter value:", filterValue);
-  console.log("Filtered items:", filteredItems);
-
   return (
     <>
       {/* Filter dropdown */}
       <div className="mb-4 flex justify-center my-4">
         <div className="bg-base-200 p-4 rounded-lg">
-
-        <label htmlFor="filter" className="mr-2 text-gray-700">
-          Filter by Customization:
-        </label>
-        <select
-          id="filter"
-          value={filterValue}
-          onChange={handleFilterChange}
-          className="border border-gray-300 rounded-md px-4 py-1 focus:outline-none focus:border-blue-500"
-        >
-          <option value="all">All</option>
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
-        </select>
+          <label htmlFor="filter" className="mr-2 text-gray-700">
+            Filter by Customization:
+          </label>
+          <select
+            id="filter"
+            value={filterValue}
+            onChange={handleFilterChange}
+            className="border border-gray-300 rounded-md px-4 py-1 focus:outline-none focus:border-blue-500"
+          >
+            <option value="all">All</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
         </div>
       </div>
 
@@ -82,9 +78,8 @@ const MyArtAndCraftList = () => {
                 </p>
               </div>
               <div className="space-y-2">
-                <Link to={"/updateCraft"}>
-
-                <button className="btn w-full">Update</button> 
+                <Link to={`/updateCraft/${item._id}`}>
+                  <button className="btn w-full">Update</button>
                 </Link>
                 <button className="btn w-full">Delete</button>
               </div>

@@ -60,7 +60,7 @@ const Route = createBrowserRouter([
         ),
       },
       {
-        path:"/updateCraft",
+        path:"/updateCraft/:id",
         element:(
           <ProtectedRoute>
             <UpdateCraft></UpdateCraft>

@@ -56,10 +56,12 @@ const Navbar = () => {
               {navLinks}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl lg:ml-0 -ml-5">DrawNook</a>
+          <a className="btn btn-ghost text-xl lg:ml-0 -ml-5">
+            <img src={"https://i.ibb.co/2PpQPLY/letter-d.png"} alt="" className="h-8" />
+            DrawNook</a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{navLinks}</ul>
+          <ul className="menu menu-horizontal px-1 border-x-2 border-green-400 space-x-2">{navLinks}</ul>
         </div>
 
         <div className="navbar-end gap-1">

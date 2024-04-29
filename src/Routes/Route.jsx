@@ -11,6 +11,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import Details from "../SubPages/Details";
 import { baseURL } from "../hooks/url";
 import UpdateCraft from "../Pages/UpdateCraft";
+import CraftDetails from "../SubPages/CraftDetails";
 
 const Route = createBrowserRouter([
   {
@@ -29,7 +30,16 @@ const Route = createBrowserRouter([
             <Details></Details>
           </ProtectedRoute>
         ),
-        loader: () => fetch(`${baseURL}/arts`)
+        loader: () => fetch(`${baseURL}/arts`),
+      },
+      {
+        path: "/craftDetails/:id",
+        element: (
+          <ProtectedRoute>
+            <CraftDetails></CraftDetails>
+          </ProtectedRoute>
+        ),
+        loader : () => fetch(`${baseURL}/crafts`)
       },
       {
         path: "/register",
@@ -60,13 +70,13 @@ const Route = createBrowserRouter([
         ),
       },
       {
-        path:"/updateCraft/:id",
-        element:(
+        path: "/updateCraft/:id",
+        element: (
           <ProtectedRoute>
             <UpdateCraft></UpdateCraft>
           </ProtectedRoute>
-        )
-      }
+        ),
+      },
     ],
   },
 ]);

@@ -4,7 +4,7 @@ import { ThreeDots } from "react-loader-spinner";
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
-  const location = useLocation;
+  const location = useLocation();
 
   if (loading) {
     return (

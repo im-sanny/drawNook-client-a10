@@ -59,7 +59,7 @@ const FirebaseProvider = ({ children }) => {
         setLoading(false);
       }
     });
-    // setLoading(false);
+    setLoading(false);
     return () => unsubscribe();
   }, []);
 

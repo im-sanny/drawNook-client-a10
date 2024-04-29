@@ -1,6 +1,6 @@
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import { Bars } from "react-loader-spinner";
+import { ThreeDots } from "react-loader-spinner";
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -9,17 +9,16 @@ const ProtectedRoute = ({ children }) => {
   if (loading) {
     return (
       <div className="flex justify-center items-center">
-        
-        <Bars
-          height="80"
-          width="80"
+        <ThreeDots
+          visible={true}
+          height="100"
+          width="100"
           color="#4fa94d"
-          ariaLabel="bars-loading"
+          radius="9"
+          ariaLabel="three-dots-loading"
           wrapperStyle={{}}
           wrapperClass=""
-          visible={true}
         />
-        
       </div>
     );
   }

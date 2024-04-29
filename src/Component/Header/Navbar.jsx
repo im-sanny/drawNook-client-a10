@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
+import ThemeControler from "../ThemeControler";
 
 const Navbar = () => {
   const { logout, user } = useAuth();
@@ -29,7 +30,7 @@ const Navbar = () => {
   );
   return (
     <>
-      <div className="navbar bg-base-100">
+      <div className="navbar dark:bg-gray-100 dark:text-gray-800 shadow-md">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -50,7 +51,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white dark:bg-base-100 rounded-box w-52"
             >
               {navLinks}
             </ul>
@@ -62,8 +63,9 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end gap-1">
-          <h1>darkmode</h1>
-          {!user ? ( // If user is not logged in
+          <ThemeControler></ThemeControler>
+          {!user ? (
+            // If user is not logged in
             <>
               <div>
                 <button className="btn btn-ghost hidden sm:inline-block lg:inline-block md:inline-block font-bold">
@@ -74,7 +76,7 @@ const Navbar = () => {
                 <button className="m-1 btn btn-ghost font-bold">
                   <NavLink to="/login">Login</NavLink>
                 </button>
-                <ul className="p-2 lg:hidden shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-">
+                <ul className="p-2 lg:hidden shadow menu dropdown-content z-[1] bg-white dark:bg-base-100 rounded-box w-">
                   <li>
                     <NavLink to="/register">Registration</NavLink>
                   </li>
@@ -97,7 +99,7 @@ const Navbar = () => {
               </div>
               {/* Profile dropdown menu */}
               {isDropdownOpen && (
-                <ul className="menu menu-sm dropdown-content mt-3 z-[10] p-2 shadow bg-base-100 rounded-box w-36 absolute right-0">
+                <ul className="menu menu-sm dropdown-content mt-3 z-[10] p-2 shadow bg-white dark:bg-base-00 rounded-box w-36 absolute right-0">
                   {/* Username */}
                   <li className="font-bold">{user.displayName}</li>
                   {/* Logout option */}

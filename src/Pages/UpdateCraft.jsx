@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UpdateCraft = () => {
   const { id } = useParams();
@@ -17,24 +18,44 @@ const UpdateCraft = () => {
 
   const handleUpdate = (event) => {
     event.preventDefault();
-
+  
     const name = event.target.name.value;
     const itemName = event.target.itemName.value;
     const price = event.target.price.value;
     const info = { name, itemName, price };
+  
     fetch(`http://localhost:5000/updateArt/${id}`, {
       method: "PUT",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(info),
     })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error('Failed to update item');
+      }
+      return res.json();
+    })
+    .then((data) => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Update Successful',
+        text: 'Your item has been successfully updated.',
       });
+      console.log(data);
+    })
+    .catch((error) => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Update Failed',
+        text: 'Failed to update item. Please try again later.',
+      });
+      console.error('Error:', error);
+    });
   };
+  
 
   return (
-    <div className="container mx-auto mt-8">
+    <div className="container mx-auto mt-8 dark:bg-gray-100 dark:text-gray-800 shadow-md">
       <h2 className="text-2xl text-center font-bold mb-4">
         Update Art & Craft Item
       </h2>

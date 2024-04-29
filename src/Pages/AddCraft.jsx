@@ -2,7 +2,7 @@ import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 
 const AddCraft = () => {
-  const { user } = useAuth()
+  const { user } = useAuth();
   const handleAddArt = (event) => {
     event.preventDefault();
     const email = user.email;
@@ -33,21 +33,23 @@ const AddCraft = () => {
       description,
     };
     fetch("http://localhost:5000/addCraft", {
-      method:"POST",
-      headers:{"Content-type" : "application/json" },
-      body: JSON.stringify(allForm)
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(allForm),
     })
-    .then(res => res.json())
-    .then(data => {
-      if (data?.insertedId) {
-        Swal.fire({
-          icon: "success",
-          title: "Craft Added",
-          text: "Your craft has been successfully added!",
-        });
-      }
-      console.log(data);
-    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.insertedId) {
+          Swal.fire({
+            icon: "success",
+            title: "Craft Added",
+            text: "Your craft has been successfully added!",
+          }).then(() => {
+            form.reset();
+          });
+        }
+        console.log(data);
+      });
     console.log(allForm);
   };
 
@@ -165,7 +167,10 @@ const AddCraft = () => {
                 name="email"
               />
 
-              <label className="block mt-4 mb-2 dark:text-white" htmlFor="image">
+              <label
+                className="block mt-4 mb-2 dark:text-white"
+                htmlFor="image"
+              >
                 Image
               </label>
               <input

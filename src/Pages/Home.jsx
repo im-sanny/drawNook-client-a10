@@ -9,7 +9,7 @@ import ArtCraftCategory from "../SubPages/ArtCraftCategory";
 import { FaPaintbrush } from "react-icons/fa6";
 import Subcategory from "../SubPages/Subcategory";
 import { Typewriter } from "react-simple-typewriter";
-import { DNA, ThreeDots } from "react-loader-spinner";
+import { ThreeDots } from "react-loader-spinner";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -169,9 +169,25 @@ const Home = () => {
       </>
 
       {/* subcategories */}
-      <div className="">
+      {loading && (
+        <p className="flex justify-center items-center">
+          <ThreeDots
+            visible={true}
+            height="80"
+            width="80"
+            color="#4fa94d"
+            radius="9"
+            ariaLabel="three-dots-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+          />
+        </p>
+      )}
+      {!loading && (
+        <div className="">
           <Subcategory></Subcategory>
-      </div>
+        </div>
+      )}
 
       {/* timeline */}
       <div>

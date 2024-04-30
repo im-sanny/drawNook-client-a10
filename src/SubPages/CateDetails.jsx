@@ -1,4 +1,3 @@
-import React from "react";
 import { BiSolidCustomize } from "react-icons/bi";
 import { FaStar } from "react-icons/fa";
 import { GrStorage } from "react-icons/gr";

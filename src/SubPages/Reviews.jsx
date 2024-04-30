@@ -1,16 +1,28 @@
-/* eslint-disable react/no-unescaped-entities */
+import { MdReviews } from "react-icons/md";
 const Reviews = () => {
     return (
       <>
+      <div className="text-center md:text-left my-10">
+        <p className="text-lg font-semibold text-pink-600 inline-block rounded py-1 px-2">
+          <div className="flex items-center gap-2 text-1xl">
+            <span className="bg-yellow-200 rounded-full text-pink-600 p-2">
+              <MdReviews size={30} />
+            </span>
+            Review!
+          </div>
+        </p>
+        <p className="text-[32px] lg:text-[40px] font-semibold mb-3">
+          Review about DrawNook
+        </p>
+      </div>
         <div>
           <h1
             data-aos="zoom-in"
             data-aos-duration="1000"
             className="text-3xl font-bold text-center my-5"
           >
-            Reviews from our satisfied customers!
           </h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-20">
             <div
               data-aos="fade-up"
               data-aos-duration="1000"

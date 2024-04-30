@@ -1,6 +1,7 @@
 import { FaFireAlt } from "react-icons/fa";
 import Banner from "../SubPages/Banner";
 import CraftItems from "../SubPages/CraftItems";
+import { GiJourney } from "react-icons/gi";
 import Features from "../SubPages/Features";
 import Reviews from "../SubPages/Reviews";
 import Timeline from "../SubPages/Timeline";
@@ -36,7 +37,7 @@ const Home = () => {
         <Banner></Banner>
       </div>
 
-      {/*craft items */}
+      {/*instrument */}
       <>
         <div className="text-center md:text-right my-10">
           <p className="text-lg font-semibold text-pink-600 inline-block rounded py-1 px-2">
@@ -71,9 +72,8 @@ const Home = () => {
             <CraftItems key={craftItem._id} craftItem={craftItem} />
           ))}
         </div>
-       
       </>
-      {/* instrument */}
+      {/* draw and painting */}
       <>
         <div className="text-center md:text-left my-10">
           <p className="text-lg font-semibold text-pink-600 inline-block rounded py-1 px-2">
@@ -85,7 +85,7 @@ const Home = () => {
             </div>
           </p>
           <p className="text-[32px] lg:text-[40px] font-semibold mb-3">
-          Art & Craft Categories Section
+            Art & Craft Categories Section
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 lg:mx-0 mx-5 grid-cols-1 gap-5 lg:my-10">
@@ -96,15 +96,15 @@ const Home = () => {
       </>
 
       {/* feature */}
-      <div>
+      {/* <div>
         <Features></Features>
-      </div>
+      </div> */}
 
       {/* timeline */}
       <div>
         <Timeline></Timeline>
       </div>
-
+    
       {/* review */}
       <div>
         <Reviews></Reviews>

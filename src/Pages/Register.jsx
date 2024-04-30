@@ -49,19 +49,6 @@ const Register = () => {
       toast.success("Registration successful!");
       navigate(form);
       reset();
-      const user ={email};
-      fetch("http://localhost:5000/user", {
-        method:'POST',
-        headers:{
-          'content-type':'application/json'
-        },
-        body:JSON.stringify(user)
-      })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-      })
-
     } catch (error) {
       toast.error("Registration failed. Please try again.");
     }

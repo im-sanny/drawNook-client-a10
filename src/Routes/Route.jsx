@@ -12,6 +12,7 @@ import Details from "../SubPages/Details";
 import { baseURL } from "../hooks/url";
 import UpdateCraft from "../Pages/UpdateCraft";
 import CraftDetails from "../SubPages/CraftDetails";
+import ViewAllDetails from "../SubPages/ViewAllDetails";
 
 const Route = createBrowserRouter([
   {
@@ -52,7 +53,12 @@ const Route = createBrowserRouter([
       {
         path: "/allArt",
         element: <AllArtsAndCraft></AllArtsAndCraft>,
-        loader: () => fetch(`${baseURL}/user`)
+        loader: () => fetch(`${baseURL}/addCrafts`)
+      },
+      {
+        path: "/viewAllDetails/:id",
+        element: <ViewAllDetails></ViewAllDetails>,
+        loader: () => fetch(`${baseURL}/addCrafts`)
       },
       {
         path: "/addCraft",

@@ -1,4 +1,5 @@
 import {
+  
   GithubAuthProvider,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -12,14 +13,13 @@ import auth from "../Firebase/firebaseConfig";
 
 export const AuthContext = createContext(null);
 
-//social auth providers
+//social auth provider
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
 
 const FirebaseProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  // console.log(loading);
 
   //create user
   const createUser = (email, password) => {
@@ -38,15 +38,15 @@ const FirebaseProvider = ({ children }) => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
-
   //github login
   const githubLogin = () => {
     setLoading(true);
     return signInWithPopup(auth, githubProvider);
   };
 
-  //log out
-  const logout = () => {
+
+  //logout
+  const logOut = () => {
     setUser(null);
     signOut(auth);
   };
@@ -56,22 +56,22 @@ const FirebaseProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
-        setLoading(false);
       }
+      setLoading(false);
+      return () => unsubscribe();
     });
-    setLoading(false);
-    return () => unsubscribe();
   }, []);
 
   const allValues = {
     createUser,
+    user,
     signInUser,
     googleLogin,
     githubLogin,
-    logout,
-    user,
+    logOut,
     loading,
   };
+
   return (
     <AuthContext.Provider value={allValues}>{children}</AuthContext.Provider>
   );

@@ -50,7 +50,7 @@ const Banner = () => {
               <div
                 className="slide slide2 rounded-lg"
                 style={{
-                  backgroundImage: `url('https://i.ibb.co/qktY6f1/wallpaperflare-com-wallpaper-1.jpg')`,
+                  backgroundImage: `url('https://i.ibb.co/qjF3d4P/squirrel-1245583-1920.jpg')`,
                   backgroundSize: "100% auto",
                   backgroundPosition: "center",
                   backgroundRepeat: "no-repeat",
@@ -73,7 +73,7 @@ const Banner = () => {
               <div
                 className="slide slide3 rounded-lg"
                 style={{
-                  backgroundImage: `url('https://i.ibb.co/t8jNWLP/wallpaperflare-com-wallpaper-2.jpg')`,
+                  backgroundImage: `url('https://i.ibb.co/N1cGYjz/snail-83672-1280.jpg')`,
                   backgroundSize: "100% auto",
                   backgroundPosition: "center",
                   backgroundRepeat: "no-repeat",
@@ -96,7 +96,7 @@ const Banner = () => {
               <div
                 className="slide slide1 rounded-lg"
                 style={{
-                  backgroundImage: `url(' https://i.ibb.co/3vyZKjk/9e762c05-bb5a-4651-87b6-94e7e65bca7a.jpg')`,
+                  backgroundImage: `url('https://i.ibb.co/hfckxJq/easter-eggs-252874-1920.jpg')`,
                   backgroundSize: "100% auto",
                   backgroundPosition: "center",
                   backgroundRepeat: "no-repeat",

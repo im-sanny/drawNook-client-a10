@@ -1,7 +1,7 @@
 const Features = () => {
     return (
       <>
-        <div className="dark:bg-gray-100 dark:text-gray-800 rounded-md">
+        <div className="dark:bg-gray-100 dark:text-gray-800 mt-5 rounded-md">
           <div className="px-4 py-16 mx-auto max-w-7xl sm:px-6 lg:px-8 mb-5">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-3xl font-extrabold sm:text-4xl">

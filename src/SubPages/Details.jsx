@@ -19,7 +19,7 @@ const Details = () => {
           className="hero min-h-[500px] rounded-lg"
           style={{
             backgroundImage:
-              "url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)",
+            "url(https://i.ibb.co/8BZ25Gc/cats-6614088-1920.jpg)",
           }}
         >
           <div className="hero-overlay bg-opacity-60 rounded-lg"></div>

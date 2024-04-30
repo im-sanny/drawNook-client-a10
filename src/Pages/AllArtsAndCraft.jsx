@@ -1,7 +1,8 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const AllArtsAndCraft = () => {
-  const loadedUser = useLoaderData();
+  const loadedArts = useLoaderData();
+  console.log(loadedArts);
   return (
     <div>
       <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800">
@@ -9,7 +10,7 @@ const AllArtsAndCraft = () => {
           Arts & Craft List
         </h2>
         <div className="overflow-x-auto">
-          <table className="min-w-full text-xs">
+          <table className="min-w-full">
             <colgroup>
               <col />
               <col />
@@ -29,8 +30,11 @@ const AllArtsAndCraft = () => {
               </tr>
             </thead>
             <tbody>
-              {loadedUser.map((user) => (
-                <tr key={user._id} className="border-b border-opacity-20 dark:border-gray-300 dark:bg-gray-50">
+              {loadedArts.map((user) => (
+                <tr
+                  key={user._id}
+                  className="border-b border-opacity-20 dark:border-gray-300 dark:bg-gray-50"
+                >
                   <td className="p-3">
                     <p>{user._id}</p>
                   </td>
@@ -38,19 +42,19 @@ const AllArtsAndCraft = () => {
                     <p>{user.name}</p>
                   </td>
                   <td className="p-3">
-                    <p>14 Jan 2022</p>
-                    <p className="dark:text-gray-600">Friday</p>
+                    <p>{user.itemName}</p>
                   </td>
                   <td className="p-3">
-                    <p>01 Feb 2022</p>
-                    <p className="dark:text-gray-600">Tuesday</p>
+                    <p>{user.subcategory}</p>
                   </td>
                   <td className="p-3 text-right">
-                    <p>$15,792</p>
+                    <p>${user.price}</p>
                   </td>
                   <td className="p-3 text-right">
-                    <span className="px-3 btn btn-sm py-1 font-semibold rounded-md dark:bg-violet-600 dark:text-gray-50">
-                      <span>View Details</span>
+                    <span className=" btn btn-sm w-auto md:w-auto lg:w-32  font-semibold rounded-md dark:bg-violet-600 dark:text-gray-50">
+                      <Link to={`/viewAllDetails/${user._id}`}>
+                        View Details
+                      </Link>
                     </span>
                   </td>
                 </tr>

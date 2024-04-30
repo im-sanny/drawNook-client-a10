@@ -1,16 +1,27 @@
-/* eslint-disable react/no-unescaped-entities */
+import { GiJourney } from "react-icons/gi";
 
 const Timeline = () => {
   return (
     <div>
-      <section className="dark:bg-gray-100 dark:text-gray-800 mb-5 rounded-md">
+      <div className="text-center md:text-right my-10">
+        <p className="text-lg font-semibold text-pink-600 inline-block rounded py-1 px-2">
+          <div className="flex items-center gap-2 text-1xl">
+            <span className="bg-yellow-200 rounded-full text-pink-600 p-2">
+              <GiJourney size={30} />
+            </span>
+            Our Journey!
+          </div>
+        </p>
+        <p className="text-[32px] lg:text-[40px] font-semibold mb-3">
+          Journey at DrawNook
+        </p>
+      </div>
+      <section className="dark:bg-gray-100 border-2 border-blue-100 dark:text-gray-800 mb-5 rounded-md">
         <h1
           data-aos="zoom-in"
           data-aos-duration="1000"
           className="text-3xl font-bold text-center pt-5"
-        >
-          Journey at DrawNook
-        </h1>
+        ></h1>
         <div className="container max-w-5xl px-4 py-12 mx-auto">
           <div className="grid gap-4 mx-4 sm:grid-cols-12">
             <div className="col-span-12 sm:col-span-3">

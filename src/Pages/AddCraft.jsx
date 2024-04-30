@@ -32,7 +32,7 @@ const AddCraft = () => {
       rating,
       description,
     };
-    fetch("http://localhost:5000/addCraft", {
+    fetch("https://b9-a10-server-nu.vercel.app/addCraft", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(allForm),

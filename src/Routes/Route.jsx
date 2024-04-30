@@ -33,6 +33,17 @@ const Route = createBrowserRouter([
         ),
         loader: () => fetch(`${baseURL}/arts`),
       },
+      // {
+      //   path: "/subcategories/:id",
+      //   element: (
+      //     <ProtectedRoute>
+      //       <Subcategory></Subcategory>
+      //     </ProtectedRoute>
+      //   ),
+      //   loader: () => fetch ("/public/data.json")
+      //   // loader: () => fetch(`${baseURL}/subcategories
+      //   // `),
+      // },
       {
         path: "/craftDetails/:id",
         element: (

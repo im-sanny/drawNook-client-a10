@@ -9,36 +9,42 @@ import ArtCraftCategory from "../SubPages/ArtCraftCategory";
 import { FaPaintbrush } from "react-icons/fa6";
 import Subcategory from "../SubPages/Subcategory";
 import { Typewriter } from "react-simple-typewriter";
-import { DNA } from "react-loader-spinner";
+import { DNA, ThreeDots } from "react-loader-spinner";
 
 const Home = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [craftItems, setCraftItems] = useState([]);
   const [arts, setArts] = useState([]);
-  const [subC, setSub] = useState([]);
-  
 
   const handleDone = () => {
     console.log(`nonstop`);
   };
 
   useEffect(() => {
-    //crafts
+    setLoading(true); // Set loading to true before fetching data
+
+    // Fetch crafts
     fetch(`${baseURL}/crafts`)
       .then((res) => res.json())
       .then((data) => {
         setCraftItems(data);
-        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching crafts:", error);
+      })
+      .finally(() => {
+        setLoading(false); // Set loading to false after fetching data
       });
-    //arts
+
+    // Fetch arts
     fetch(`${baseURL}/arts`)
       .then((res) => res.json())
-      .then((data) => setArts(data));
-
-    //categories
-    fetch(`${baseURL}/subcategories`)
-      .then((res) => res.json())
-      .then((data) => setSub(data));
+      .then((data) => {
+        setArts(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching arts:", error);
+      });
   }, []);
 
   return (
@@ -85,23 +91,24 @@ const Home = () => {
         </div>
         {/* grid grid-cols-5 gap-4  dark:bg-[#0F172A] */}
         <div className=" grid grid-cols-2 md:grid-cols-4 sm:grid-cols-3  xl:grid-cols-5 gap-5 mt-10 w-full mb-10">
-          {loading && (
+          {loading && ( // Show loader if loading is true
             <p className="flex justify-center items-center">
-              render(
-              <DNA
+              <ThreeDots
                 visible={true}
                 height="80"
                 width="80"
-                ariaLabel="dna-loading"
+                color="#4fa94d"
+                radius="9"
+                ariaLabel="three-dots-loading"
                 wrapperStyle={{}}
-                wrapperClass="dna-wrapper"
+                wrapperClass=""
               />
-              )
             </p>
           )}
-          {craftItems?.map((craftItem) => (
-            <CraftItems key={craftItem._id} craftItem={craftItem} />
-          ))}
+          {!loading &&
+            craftItems.map((craftItem) => (
+              <CraftItems key={craftItem._id} craftItem={craftItem} />
+            ))}
         </div>
       </>
       {/* draw and painting */}
@@ -140,17 +147,30 @@ const Home = () => {
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 lg:mx-0 mx-5 grid-cols-1 gap-5 lg:my-10">
-          {arts.map((art) => (
-            <ArtCraftCategory key={art._id} art={art}></ArtCraftCategory>
-          ))}
+          {loading && ( // Show loader if loading is true
+            <p className="flex justify-center items-center">
+              <ThreeDots
+                visible={true}
+                height="80"
+                width="80"
+                color="#4fa94d"
+                radius="9"
+                ariaLabel="three-dots-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+              />
+            </p>
+          )}
+          {!loading &&
+            arts.map((art) => (
+              <ArtCraftCategory key={art._id} art={art}></ArtCraftCategory>
+            ))}
         </div>
       </>
 
       {/* subcategories */}
       <div className="">
-        {subC.map((sub, index) => (
-          <Subcategory key={index} sub={sub} />
-        ))}
+          <Subcategory></Subcategory>
       </div>
 
       {/* timeline */}

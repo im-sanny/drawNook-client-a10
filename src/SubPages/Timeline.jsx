@@ -1,6 +1,10 @@
 import { GiJourney } from "react-icons/gi";
+import { Typewriter } from "react-simple-typewriter";
 
 const Timeline = () => {
+  const handleDone = () => {
+    console.log(`nonstop`);
+  };
   return (
     <div>
       <div className="text-center md:text-right my-10">
@@ -9,11 +13,33 @@ const Timeline = () => {
             <span className="bg-yellow-200 rounded-full text-pink-600 p-2">
               <GiJourney size={30} />
             </span>
-            Our Journey!
+            <Typewriter
+                words={[" Our Journey!"]}
+                loop={5}
+                cursor
+                cursorStyle="-"
+                typeSpeed={70}
+                deleteSpeed={50}
+                delaySpeed={1000}
+                onLoopDone={handleDone}
+                // onType={handleType}
+              />
+           
           </div>
         </p>
         <p className="text-[32px] lg:text-[40px] font-semibold mb-3">
-          Journey at DrawNook
+        <Typewriter
+                words={["Journey at DrawNook"]}
+                loop={5}
+                cursor
+                cursorStyle="-"
+                typeSpeed={70}
+                deleteSpeed={50}
+                delaySpeed={1000}
+                onLoopDone={handleDone}
+                // onType={handleType}
+              />
+          
         </p>
       </div>
       <section className="dark:bg-gray-100 border-2 border-blue-100 dark:text-gray-800 mb-5 rounded-md">

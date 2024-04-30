@@ -3,6 +3,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Fade } from "react-awesome-reveal";
 
 const Banner = () => {
   return (
@@ -40,8 +41,10 @@ const Banner = () => {
                   className="absolute inset-0 flex flex-col justify-center items-center"
                 >
                   <div className="text-2xl glass text-center md:text-3xl font-bold  p-5 rounded-lg text-white">
-                    <div>Welcome to DrawNook!</div>
-                    <p>Where Artistry Knows No Bounds!</p>
+                    <Fade cascade damping={0.1}>
+                      <div>Welcome to DrawNook!</div>
+                      <p>Where Artistry Knows No Bounds!</p>
+                    </Fade>
                   </div>
                 </div>
               </div>
@@ -63,8 +66,10 @@ const Banner = () => {
                   className="absolute inset-0 flex flex-col justify-center items-center"
                 >
                   <div className="text-2xl glass text-center md:text-3xl font-bold  p-5 rounded-lg text-white">
-                    <div>Welcome to DrawNook!</div>
-                    <p>Where Artistry Knows No Bounds!</p>
+                    <Fade cascade damping={0.1}>
+                      <div>Welcome to DrawNook!</div>
+                      <p>Where Artistry Knows No Bounds!</p>
+                    </Fade>
                   </div>
                 </div>
               </div>
@@ -86,8 +91,10 @@ const Banner = () => {
                   className="absolute inset-0 flex flex-col justify-center items-center"
                 >
                   <div className="text-2xl glass text-center md:text-3xl font-bold  p-5 rounded-lg text-white">
-                    <div>Welcome to DrawNook!</div>
-                    <p>Where Artistry Knows No Bounds!</p>
+                    <Fade cascade damping={0.1}>
+                      <div>Welcome to DrawNook!</div>
+                      <p>Where Artistry Knows No Bounds!</p>
+                    </Fade>
                   </div>
                 </div>
               </div>
@@ -100,7 +107,7 @@ const Banner = () => {
                   backgroundSize: "100% auto",
                   backgroundPosition: "center",
                   backgroundRepeat: "no-repeat",
-                  height: "500px", 
+                  height: "500px",
                 }}
               >
                 <div
@@ -109,8 +116,10 @@ const Banner = () => {
                   className="absolute inset-0 flex flex-col justify-center items-center"
                 >
                   <div className="text-2xl glass text-center md:text-3xl font-bold  p-5 rounded-lg text-white">
-                    <div>Welcome to DrawNook!</div>
-                    <p>Where Artistry Knows No Bounds!</p>
+                    <Fade cascade damping={0.1}>
+                      <div>Welcome to DrawNook!</div>
+                      <p>Where Artistry Knows No Bounds!</p>
+                    </Fade>
                   </div>
                 </div>
               </div>

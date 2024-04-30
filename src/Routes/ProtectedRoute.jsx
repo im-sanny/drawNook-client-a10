@@ -1,6 +1,7 @@
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import { ThreeDots } from "react-loader-spinner";
+import Lottie from "lottie-react";
+import groovyWalkAnimation from "../lottie.json";
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -9,16 +10,7 @@ const ProtectedRoute = ({ children }) => {
   if (loading) {
     return (
       <div className="flex justify-center items-center">
-        <ThreeDots
-          visible={true}
-          height="100"
-          width="100"
-          color="#4fa94d"
-          radius="9"
-          ariaLabel="three-dots-loading"
-          wrapperStyle={{}}
-          wrapperClass=""
-        />
+        <Lottie animationData={groovyWalkAnimation} className="h-32 mt-8" />
       </div>
     );
   }

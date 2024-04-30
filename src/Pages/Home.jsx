@@ -1,20 +1,26 @@
 import { FaFireAlt } from "react-icons/fa";
 import Banner from "../SubPages/Banner";
 import CraftItems from "../SubPages/CraftItems";
-import { GiJourney } from "react-icons/gi";
-import Features from "../SubPages/Features";
 import Reviews from "../SubPages/Reviews";
 import Timeline from "../SubPages/Timeline";
 import { baseURL } from "../hooks/url";
 import { useEffect, useState } from "react";
-import { DNA } from "react-loader-spinner";
 import ArtCraftCategory from "../SubPages/ArtCraftCategory";
 import { FaPaintbrush } from "react-icons/fa6";
+import Subcategory from "../SubPages/Subcategory";
+import { Typewriter } from "react-simple-typewriter";
+import { DNA } from "react-loader-spinner";
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
   const [craftItems, setCraftItems] = useState([]);
   const [arts, setArts] = useState([]);
+  const [subC, setSub] = useState([]);
+  
+
+  const handleDone = () => {
+    console.log(`nonstop`);
+  };
 
   useEffect(() => {
     //crafts
@@ -28,6 +34,11 @@ const Home = () => {
     fetch(`${baseURL}/arts`)
       .then((res) => res.json())
       .then((data) => setArts(data));
+
+    //categories
+    fetch(`${baseURL}/subcategories`)
+      .then((res) => res.json())
+      .then((data) => setSub(data));
   }, []);
 
   return (
@@ -45,11 +56,31 @@ const Home = () => {
               <span className="bg-yellow-200 rounded-full text-pink-600 p-2">
                 <FaFireAlt size={30} />
               </span>
-              Best Crafts!
+              <Typewriter
+                words={["Best Crafts!"]}
+                loop={5}
+                cursor
+                cursorStyle="-"
+                typeSpeed={70}
+                deleteSpeed={50}
+                delaySpeed={1000}
+                onLoopDone={handleDone}
+                // onType={handleType}
+              />
             </div>
           </p>
           <p className="text-[32px] lg:text-[40px] font-semibold mb-3">
-            Craft items section
+            <Typewriter
+              words={["Craft items section"]}
+              loop={5}
+              cursor
+              cursorStyle="-"
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1000}
+              onLoopDone={handleDone}
+              // onType={handleType}
+            />
           </p>
         </div>
         {/* grid grid-cols-5 gap-4  dark:bg-[#0F172A] */}
@@ -81,11 +112,31 @@ const Home = () => {
               <span className="bg-yellow-200 rounded-full text-pink-600 p-2">
                 <FaPaintbrush size={30} />
               </span>
-              Painting & Drawings!
+              <Typewriter
+                words={[" Painting & Drawings!"]}
+                loop={5}
+                cursor
+                cursorStyle="-"
+                typeSpeed={70}
+                deleteSpeed={50}
+                delaySpeed={1000}
+                onLoopDone={handleDone}
+                // onType={handleType}
+              />
             </div>
           </p>
           <p className="text-[32px] lg:text-[40px] font-semibold mb-3">
-            Art & Craft Categories Section
+            <Typewriter
+              words={["Art & Craft Categories Section"]}
+              loop={5}
+              cursor
+              cursorStyle="-"
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1000}
+              onLoopDone={handleDone}
+              // onType={handleType}
+            />
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 lg:mx-0 mx-5 grid-cols-1 gap-5 lg:my-10">
@@ -95,16 +146,18 @@ const Home = () => {
         </div>
       </>
 
-      {/* feature */}
-      {/* <div>
-        <Features></Features>
-      </div> */}
+      {/* subcategories */}
+      <div className="">
+        {subC.map((sub, index) => (
+          <Subcategory key={index} sub={sub} />
+        ))}
+      </div>
 
       {/* timeline */}
       <div>
         <Timeline></Timeline>
       </div>
-    
+
       {/* review */}
       <div>
         <Reviews></Reviews>

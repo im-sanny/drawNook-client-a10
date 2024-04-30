@@ -13,6 +13,7 @@ import { baseURL } from "../hooks/url";
 import UpdateCraft from "../Pages/UpdateCraft";
 import CraftDetails from "../SubPages/CraftDetails";
 import ViewAllDetails from "../SubPages/ViewAllDetails";
+import CateDetails from "../SubPages/CateDetails";
 
 const Route = createBrowserRouter([
   {
@@ -95,6 +96,15 @@ const Route = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      {
+        path:"/cateDetails/:id",
+        element:(
+          <ProtectedRoute>
+            <CateDetails></CateDetails>
+          </ProtectedRoute>
+        ),
+        loader: () => fetch(`${baseURL}/subcategory`)
+      }
     ],
   },
 ]);

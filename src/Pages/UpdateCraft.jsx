@@ -46,12 +46,7 @@ const UpdateCraft = () => {
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(info),
     })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Failed to update item");
-        }
-        return res.json();
-      })
+      .then(res => res.json())
       .then((data) => {
         Swal.fire({
           icon: "success",
@@ -59,6 +54,10 @@ const UpdateCraft = () => {
           text: "Your item has been successfully updated.",
         });
         console.log(data);
+        
+      // Reset the form
+      event.target.reset(); 
+
       })
       .catch((error) => {
         Swal.fire({

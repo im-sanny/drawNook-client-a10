@@ -2,16 +2,17 @@ import { useState, useEffect } from "react";
 import { baseURL } from "../hooks/url";
 import { Typewriter } from "react-simple-typewriter";
 import { FaFireAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Subcategory = () => {
   const handleDone = () => {
-    console.log(`nonstop`);
+    console.log(`100`);
   };
 
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    fetch(`${baseURL}/subcategories`)
+    fetch(`${baseURL}/subcategory`)
       .then((response) => response.json())
       .then((data) => setItems(data))
       .catch((error) => console.error("Error fetching items:", error));
@@ -53,22 +54,27 @@ const Subcategory = () => {
           />
         </p>
       </div>
-      <div className="my-10">
-        <div className="card-container">
-          {items.map((item) => (
-            <div key={item._id} item={item} className="card">
-              <img src={item.image} alt={item.name} />
+      <div className="my-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        {items.map((item) => (
+          <div key={item._id} item={item}>
+            <div className="card bg-base-100 shadow-xl image-full">
+              <figure>
+                <img src={item.image} alt="" />
+              </figure>
               <div className="card-body">
-                <h3>{item.name}</h3>
-                <p>{item.description}</p>
-                <p>Price: ${item.price}</p>
-                <p>Rating: {item.rating}</p>
-                <p>Processing Time: {item.processingTime} days</p>
-                <button>View Details</button>
+                <h2 className="card-title">{item.subcategory_Name}</h2>
+                <p>{item.short_description}</p>
+                <div className="card-actions justify-end">
+                  <Link to={`cateDetails/${item._id}`}>
+                  <button className="btn btn-primary text-center">
+                    View Details
+                  </button>
+                  </Link>
+                </div>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   );

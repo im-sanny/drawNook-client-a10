@@ -1,0 +1,83 @@
+[
+    {
+        "image": "https://i.ibb.co/x59Ljtm/6a4776ac-d2f3-49e2-8fb8-1b242ff30718.jpg",
+        "item_name": "Mountain View Canvas Painting",
+        "subcategory_Name": "Landscape Painting",
+        "short_description": "Capture the majestic beauty of mountains on canvas.",
+        "price": 49.99,
+        "rating": 4.8,
+        "processing_time": 3
+    },
+    {
+        "image": "https://i.ibb.co/jyRztbV/4e209a0a-d9a5-49e8-b214-30ea4a0afd95.jpg",
+        "item_name": "Forest Based Landscape Painting",
+        "subcategory_Name": "Landscape Painting",
+        "short_description": "Immerse yourself in the tranquility of forest landscapes.",
+        "price": 59.99,
+        "rating": 4.7,
+        "processing_time": 4
+    },
+    {
+        "image": "https://i.ibb.co/W2y4hZr/9bfe008e-2fbe-4a7a-b45e-812edfc92aa2.jpg",
+        "item_name": "Pencil Sketch Portrait",
+        "subcategory_Name": "Portrait Drawing",
+        "short_description": "Create lifelike portraits with pencil sketches.",
+        "price": 39.99,
+        "rating": 4.5,
+        "processing_time": 2
+    },
+    {
+        "image": "https://i.ibb.co/2KwzP0c/b6f676f1-c1e8-4bbb-b7f2-8370ab73274f.jpg",
+        "item_name": "Ink Outline Portrait",
+        "subcategory_Name": "Portrait Drawing",
+        "short_description": "Achieve a bold and expressive look with ink outline portraits.",
+        "price": 29.99,
+        "rating": 4.6,
+        "processing_time": 1
+    },
+    {
+        "image": "https://i.ibb.co/kyCCr9Q/667e5596-a83b-46a0-a799-84c177bf320f.jpg",
+        "item_name": "Animal Watercolor Portrait",
+        "subcategory_Name": "Watercolour Painting",
+        "short_description": "Capture the essence of animals in expressive watercolor portraits.",
+        "price": 54.99,
+        "rating": 4.7,
+        "processing_time": 4
+    },
+    {
+        "image": "https://i.ibb.co/yVHffPk/4be394dd-af59-4a41-aaeb-4f02cfb8a5ec.jpg",
+        "item_name": "Realistic Oil Portrait",
+        "subcategory_Name": "Oil Painting",
+        "short_description": "Create lifelike portraits with the depth and richness of oil paint.",
+        "price": 89.99,
+        "rating": 4.9,
+        "processing_time": 7
+    },
+    {
+        "image": "https://i.ibb.co/ss1cQL6/ea4d6829-9414-4373-9ead-a3544c95acc6.jpg",
+        "item_name": "Abstract Oil Painting",
+        "subcategory_Name": "Oil Painting",
+        "short_description": "Express yourself freely with abstract oil paintings.",
+        "price": 79.99,
+        "rating": 4.8,
+        "processing_time": 6
+    },
+    {
+        "image": "https://i.ibb.co/bJszN2q/97c5eef3-a165-4daa-9d44-4d1832121c89.jpg",
+        "item_name": "Architectural Charcoal Drawing",
+        "subcategory_Name": "Charcoal Sketching",
+        "short_description": "Sketch architectural structures with charcoal.",
+        "price": 59.99,
+        "rating": 4.6,
+        "processing_time": 4
+    },
+    {
+        "image": "https://i.ibb.co/0Y5T1RY/fe5f21c5-eff6-4683-b7a3-d18e5e446dbc.jpg",
+        "item_name": "Superhero Cartoon Design",
+        "subcategory_Name": "Cartoon Drawing",
+        "short_description": "Design your own superhero characters with this kit.",
+        "price": 34.99,
+        "rating": 4.5,
+        "processing_time": 3
+    }
+]

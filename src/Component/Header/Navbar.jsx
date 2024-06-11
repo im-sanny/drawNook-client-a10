@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 import ThemeControler from "../ThemeControler";
+import { Fade, Slide } from "react-awesome-reveal";
 
 const Navbar = () => {
   const { logout, user } = useAuth();
@@ -57,11 +58,18 @@ const Navbar = () => {
             </ul>
           </div>
           <a className="btn btn-ghost text-xl lg:ml-0 -ml-5">
-            <img src={"https://i.ibb.co/2PpQPLY/letter-d.png"} alt="" className="h-8" />
-            DrawNook</a>
+            <img
+              src={"https://i.ibb.co/2PpQPLY/letter-d.png"}
+              alt=""
+              className="h-8"
+            />
+            <Slide direction="up" duration={1000}>DrawNook</Slide>
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 border-x-2 border-green-400 space-x-2">{navLinks}</ul>
+          <ul className="menu menu-horizontal px-1 border-x-2 border-green-400 space-x-2">
+            {navLinks}
+          </ul>
         </div>
 
         <div className="navbar-end gap-1">

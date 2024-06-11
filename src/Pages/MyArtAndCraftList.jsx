@@ -10,7 +10,7 @@ const MyArtAndCraftList = () => {
   const [filterValue, setFilterValue] = useState("all"); // Default value for filter
 
   useEffect(() => {
-    fetch(`https://b9-a10-server-nu.vercel.app/myCraft/${user?.email}`)
+    fetch(`baseURL/myCraft/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setItems(data);
@@ -28,7 +28,7 @@ const MyArtAndCraftList = () => {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://b9-a10-server-nu.vercel.app/delete/${id}`, {
+        fetch(`baseURL/delete/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

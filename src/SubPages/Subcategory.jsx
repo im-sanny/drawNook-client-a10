@@ -3,6 +3,7 @@ import { baseURL } from "../hooks/url";
 import { Typewriter } from "react-simple-typewriter";
 import { FaFireAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { FaStar } from "react-icons/fa";
 
 const Subcategory = () => {
   const handleDone = () => {
@@ -57,22 +58,23 @@ const Subcategory = () => {
       <div className="my-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
         {items.map((item) => (
           <div key={item._id} item={item}>
-            <div className="card bg-base-100 shadow-xl image-full">
-              <figure>
-                <img src={item.image} alt="" />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">{item.subcategory_Name}</h2>
-                <p>{item.short_description}</p>
-                <div className="card-actions justify-end">
-                  <Link to={`cateDetails/${item._id}`}>
-                  <button className="btn btn-primary text-center">
-                    View Details
-                  </button>
-                  </Link>
+            <Link to={`cateDetails/${item._id}`}>
+              <div className="card bg-base-100 shadow-xl image-full">
+                <figure>
+                  <img src={item.image} alt="" className="h-40"/>
+                </figure>
+                <div className="card-body">
+                  <h2 className="card-title">{item.subcategory_Name}</h2>
+                  <p>{item.short_description}</p>
+                  <p className="font-bold text-1xl">{item.item_name}</p>
+
+                  <div className="card-actions justify-around">
+                   <p className="badge badge-rounded py-4 flex justify-center gap-1"><FaStar></FaStar>{item.rating}</p>
+                   <p className="badge badge-rounded py-4">${item.price}</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         ))}
       </div>

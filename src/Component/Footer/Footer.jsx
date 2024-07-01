@@ -10,7 +10,7 @@ const Footer = () => {
               className="flex justify-center space-x-3 lg:justify-start"
             >
               <div className="flex items-center justify-center w-12 h-12 rounded-full dark:bg-violet-600">
-                <img src="https://i.ibb.co/2PpQPLY/letter-d.png" alt="" />
+                <img src="https://i.ibb.co/HhfsNgg/letter-d.png" alt="" />
               </div>
               <span className="self-center text-2xl font-semibold">
                 DrawNook

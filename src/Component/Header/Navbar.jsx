@@ -59,7 +59,7 @@ const Navbar = () => {
           </div>
           <a className="btn btn-ghost text-xl lg:ml-0 -ml-5">
             <img
-              src={"https://i.ibb.co/2PpQPLY/letter-d.png"}
+              src={"https://i.ibb.co/HhfsNgg/letter-d.png"}
               alt=""
               className="h-8"
             />

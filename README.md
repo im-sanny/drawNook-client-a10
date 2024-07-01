@@ -30,7 +30,7 @@ Explore DrawNook live at [https://drawnook-a10.web.app](https://drawnook-a10.web
 
 ### Author:
 
-DrawNook is developed and maintained by [Your Name], a passionate developer dedicated to delivering exceptional user experiences through innovative and modern web technologies.
+DrawNook is developed and maintained by [Rasel Parvez Sanny ], a passionate developer dedicated to delivering exceptional user experiences through innovative and modern web technologies.
 
 ---
 

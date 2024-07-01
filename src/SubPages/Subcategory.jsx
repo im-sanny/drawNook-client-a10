@@ -61,7 +61,7 @@ const Subcategory = () => {
             <Link to={`cateDetails/${item._id}`}>
               <div className="card bg-base-100 shadow-xl image-full">
                 <figure>
-                  <img src={item.image} alt="" className="h-40"/>
+                  <img src={item.image} alt="" className="h-full"/>
                 </figure>
                 <div className="card-body">
                   <h2 className="card-title">{item.subcategory_Name}</h2>

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { MdReviews } from "react-icons/md";
 import { Typewriter } from "react-simple-typewriter";
 const Reviews = () => {
@@ -55,7 +56,7 @@ const Reviews = () => {
               <div className="flex space-x-4">
                 <div>
                   <img
-                    src="https://source.unsplash.com/100x100/?portrait"
+                    src="https://i.ibb.co/FhhZkbn/student-3.png"
                     alt=""
                     className="object-cover w-12 h-12 rounded-full dark:bg-gray-500"
                   />
@@ -94,7 +95,7 @@ const Reviews = () => {
               <div className="flex space-x-4">
                 <div>
                   <img
-                    src="https://source.unsplash.com/100x100/?portrait"
+                    src="https://i.ibb.co/zn9j4mZ/student-4.png"
                     alt=""
                     className="object-cover w-12 h-12 rounded-full dark:bg-gray-500"
                   />
@@ -133,7 +134,7 @@ const Reviews = () => {
               <div className="flex space-x-4">
                 <div>
                   <img
-                    src="https://source.unsplash.com/100x100/?portrait"
+                    src="https://i.ibb.co/bF0gMFM/student.png"
                     alt=""
                     className="object-cover w-12 h-12 rounded-full dark:bg-gray-500"
                   />
@@ -172,7 +173,7 @@ const Reviews = () => {
               <div className="flex space-x-4">
                 <div>
                   <img
-                    src="https://source.unsplash.com/100x100/?portrait"
+                    src="https://i.ibb.co/8Pxzwm7/female-student.png"
                     alt=""
                     className="object-cover w-12 h-12 rounded-full dark:bg-gray-500"
                   />

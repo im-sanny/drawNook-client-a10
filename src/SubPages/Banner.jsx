@@ -56,7 +56,7 @@ const Banner = () => {
               <div
                 className="slide slide2 rounded-lg bg-cover bg-center"
                 style={{
-                  backgroundImage: `url('https://i.ibb.co/qjF3d4P/squirrel-1245583-1920.jpg')`,
+                  backgroundImage: `url('https://i.ibb.co/VxBVFq3/painting-3995999-1920.jpg')`,
                   height: "500px",
                 }}
               >

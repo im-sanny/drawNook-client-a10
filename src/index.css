@@ -4,7 +4,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-
 /* Apply fonts to specific elements */
 body {
   font-family: 'Playfair Display', serif; /* Default font */
@@ -19,7 +18,7 @@ body {
 }
 
 .font-montserrat {
-    font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 @tailwind base;

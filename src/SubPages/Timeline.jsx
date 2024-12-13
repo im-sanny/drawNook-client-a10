@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { GiJourney } from "react-icons/gi";
 import { Typewriter } from "react-simple-typewriter";
 
@@ -24,7 +25,7 @@ const Timeline = () => {
                 onLoopDone={handleDone}
                 // onType={handleType}
               />
-           
+
           </div>
         </p>
         <p className="text-[32px] lg:text-[40px] font-semibold mb-3">
@@ -39,7 +40,7 @@ const Timeline = () => {
                 onLoopDone={handleDone}
                 // onType={handleType}
               />
-          
+
         </p>
       </div>
       <section className="dark:bg-gray-100 border-2 border-blue-100 dark:text-gray-800 mb-5 rounded-md">

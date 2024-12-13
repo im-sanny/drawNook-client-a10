@@ -1,68 +1,106 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { useState } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
+import { Eye, Filter, Search } from 'lucide-react';
 
 const AllArtsAndCraft = () => {
   const loadedArts = useLoaderData();
-  console.log(loadedArts);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filterCategory, setFilterCategory] = useState('');
+
+  // Get unique categories for filtering
+  const categories = [...new Set(loadedArts.map((art) => art.subcategory))];
+
+  // Filter and search logic
+  const filteredArts = loadedArts.filter(
+    (art) =>
+      (filterCategory ? art.subcategory === filterCategory : true) &&
+      (searchTerm
+        ? art.itemName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          art.name.toLowerCase().includes(searchTerm.toLowerCase())
+        : true)
+  );
+
   return (
-    <div>
-      <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800">
-        <h2 className="mb-4 text-2xl font-semibold text-purple-600 leading-tight">
-          Arts & Craft List
+    <div className="container mx-auto px-4 py-8">
+      <div className="flex justify-between items-center mb-8">
+        <h2 className="text-3xl font-bold text-purple-600">
+          Arts & Craft Gallery
         </h2>
-        <div className="overflow-x-auto">
-          <table className="min-w-full">
-            <colgroup>
-              <col />
-              <col />
-              <col />
-              <col />
-              <col />
-              <col className="w-24" />
-            </colgroup>
-            <thead className="dark:bg-gray-300">
-              <tr className="text-left">
-                <th className="p-3">UserId #</th>
-                <th className="p-3">Name</th>
-                <th className="p-3">Item Name</th>
-                <th className="p-3">Category Name</th>
-                <th className="p-3 text-right">Price</th>
-                <th className="p-3">Crafts & Arts</th>
-              </tr>
-            </thead>
-            <tbody>
-              {loadedArts.map((user) => (
-                <tr
-                  key={user._id}
-                  className="border-b border-opacity-20 dark:border-gray-300 dark:bg-gray-50"
-                >
-                  <td className="p-3">
-                    <p>{user._id}</p>
-                  </td>
-                  <td className="p-3">
-                    <p>{user.name}</p>
-                  </td>
-                  <td className="p-3">
-                    <p>{user.itemName}</p>
-                  </td>
-                  <td className="p-3">
-                    <p>{user.subcategory}</p>
-                  </td>
-                  <td className="p-3 text-right">
-                    <p>${user.price}</p>
-                  </td>
-                  <td className="p-3 text-right">
-                    <span className=" btn btn-sm w-auto md:w-auto lg:w-32  font-semibold rounded-md dark:bg-violet-600 dark:text-gray-50">
-                      <Link to={`/viewAllDetails/${user._id}`}>
-                        View Details
-                      </Link>
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+
+        <div className="flex items-center space-x-4">
+          {/* Search Input */}
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search items..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-300 w-64"
+            />
+            <Search className="absolute left-3 top-3 text-gray-400" />
+          </div>
+
+          {/* Category Filter */}
+          <select
+            value={filterCategory}
+            onChange={(e) => setFilterCategory(e.target.value)}
+            className="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-300"
+          >
+            <option value="">All Categories</option>
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredArts.map((art) => (
+          <div
+            key={art._id}
+            className="bg-white shadow-lg rounded-xl overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
+          >
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-xl font-bold text-gray-800">
+                  {art.itemName}
+                </h3>
+                <span className="text-purple-600 font-semibold">
+                  ${art.price}
+                </span>
+              </div>
+
+              <div className="mb-4">
+                <p className="text-gray-600">
+                  <span className="font-medium text-gray-800">Artist:</span>{' '}
+                  {art.name}
+                </p>
+                <p className="text-gray-600">
+                  <span className="font-medium text-gray-800">Category:</span>{' '}
+                  {art.subcategory}
+                </p>
+              </div>
+
+              <Link
+                to={`/viewAllDetails/${art._id}`}
+                className="flex items-center justify-center w-full bg-purple-500 text-white py-2 rounded-lg hover:bg-purple-600 transition-colors"
+              >
+                <Eye className="mr-2" /> View Details
+              </Link>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {filteredArts.length === 0 && (
+        <div className="text-center py-12 bg-gray-100 rounded-lg">
+          <p className="text-xl text-gray-600">
+            No arts or crafts found matching your search.
+          </p>
+        </div>
+      )}
     </div>
   );
 };

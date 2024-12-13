@@ -1,32 +1,48 @@
-/* eslint-disable react/no-unescaped-entities */
-import { FaPaintbrush } from "react-icons/fa6";
-import { useNavigate } from "react-router-dom";
+/* eslint-disable react/prop-types */
+import { FaPaintbrush } from 'react-icons/fa6';
+import { useNavigate } from 'react-router-dom';
 
 const CraftItems = ({ craftItem }) => {
   const navigate = useNavigate();
-  const {_id, item_name, image } = craftItem || {};
+  const { _id, item_name, image } = craftItem || {};
+
+  const handleViewDetails = () => {
+    navigate(`/craftDetails/${_id}`);
+  };
 
   return (
-    <>
-      <div className="border-yellow-50 border-2 rounded-md w-full group  cursor-pointer">
-        <div className="cardShadow p-5 w-full dark:bg-gray-200 dark:text-gray-900 rounded">
+    <div className="bg-white shadow-md rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+      <div className="relative">
+        {image ? (
           <img
-            className="w-full h-[150px] object-contain rounded-lg"
             src={image}
-            alt=""
+            alt={item_name}
+            className="w-full h-48 object-cover"
           />
-          <div className="flex justify-center">
-            <p className="mt-2 font-bold badge badge-outline text-center flex items-center justify-center gap-1">
-              <FaPaintbrush />
-              {item_name}
-            </p>
+        ) : (
+          <div className="w-full h-48 bg-gray-200 flex justify-center items-center">
+            <FaPaintbrush className="text-gray-500 text-4xl" />
           </div>
-          <div onClick={() => navigate(`/craftDetails/${_id}`)} className=" w-full group-hover:bg-[#f06d8b] rounded h-10 mt-2 bg-[#B10DC9] flex justify-center items-center text-white">
-            View Details
-          </div>
+        )}
+        <div className="absolute top-0 right-0 m-2 bg-purple-600 text-white px-2 py-1 rounded-full text-sm">
+          Craft Item
         </div>
       </div>
-    </>
+
+      <div className="p-4">
+        <h3 className="text-lg font-semibold text-gray-800 mb-2 truncate">
+          {item_name || 'Unnamed Craft'}
+        </h3>
+
+        <button
+          onClick={handleViewDetails}
+          className="w-full bg-[#B10DC9] hover:bg-[#f06d8b] text-white font-bold py-2 px-4 rounded-md transition-colors duration-300 flex items-center justify-center space-x-2"
+        >
+          <FaPaintbrush />
+          <span>View Details</span>
+        </button>
+      </div>
+    </div>
   );
 };
 

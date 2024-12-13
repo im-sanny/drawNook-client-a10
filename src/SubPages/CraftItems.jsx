@@ -11,7 +11,7 @@ const CraftItems = ({ craftItem }) => {
   };
 
   return (
-    <div className="bg-white shadow-md rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+    <div className="bg-gray-800 dark:bg-white shadow-md rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
       <div className="relative">
         {image ? (
           <img
@@ -30,7 +30,7 @@ const CraftItems = ({ craftItem }) => {
       </div>
 
       <div className="p-4">
-        <h3 className="text-lg font-semibold text-gray-800 mb-2 truncate">
+        <h3 className="text-lg font-semibold text-white dark:text-black mb-2 truncate">
           {item_name || 'Unnamed Craft'}
         </h3>
 

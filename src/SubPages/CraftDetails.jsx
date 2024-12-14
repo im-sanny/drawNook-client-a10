@@ -1,112 +1,112 @@
-import { useLoaderData, useParams } from "react-router-dom";
+/* eslint-disable react/prop-types */
+import { useLoaderData, useParams } from 'react-router-dom';
+import { ShoppingCart, Star, Clock, Box, Palette } from 'lucide-react';
 
 const CraftDetails = () => {
   const craftDetails = useLoaderData();
   const { id } = useParams();
-  const idInt = id;
-  const craft = craftDetails.find((craftDetail) => craftDetail._id === idInt);
+  const craft = craftDetails.find((craftDetail) => craftDetail._id === id);
+
+  if (!craft) {
+    return (
+      <div className="container mx-auto p-6 text-center text-2xl">
+        Craft not found
+      </div>
+    );
+  }
 
   return (
-    <div>
-      <div className="p-6 py-12 dark:bg-violet-600 border-x-2 border-violet-600 dark:text-gray-50 mt-5">
-        <div className="container mx-auto">
-          <div className="flex flex-col lg:flex-row items-center justify-between">
-            <h2 className="text-center text-6xl tracking-tighter font-bold">
-              Up to
-              <br className="sm:hidden" />
-              50% Off
-            </h2>
-            <div className="space-x-2 text-center py-2 lg:py-0">
-              <span>Plus free shipping! Use code:</span>
-              <span className="font-bold text-lg">DRAWNOOK</span>
-            </div>
-            <a
-              href="#"
-              rel="noreferrer noopener"
-              className="px-5 mt-4 lg:mt-0 py-3 rounded-md border block dark:bg-gray-900 dark:text-gray-50 dark:border-gray-600"
-            >
-              Order Now
-            </a>
+    <div className="container mx-auto px-4 py-8">
+      {/* Promotional Banner */}
+      <div className="bg-violet-600 text-white rounded-lg p-6 mb-8 shadow-lg">
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <h2 className="text-4xl font-bold mb-4 md:mb-0 text-center md:text-left">
+            Up to <span className="text-yellow-300">50% Off</span>
+          </h2>
+          <div className="flex flex-col items-center">
+            <p className="mb-2">Use Promo Code:</p>
+            <span className="bg-white text-violet-600 px-4 py-2 rounded-md font-bold tracking-wider">
+              DRAWNOOK
+            </span>
           </div>
+          <button className="mt-4 md:mt-0 bg-white text-violet-600 hover:bg-violet-100 px-6 py-3 rounded-md transition duration-300 flex items-center">
+            <ShoppingCart className="mr-2" /> Order Now
+          </button>
         </div>
       </div>
-      <div
-        data-aos="fade-up"
-        data-aos-duration="1200"
-        className="mx-auto p-5 lg:p-16 md:p-16 bg-blue-50 rounded-lg my-5"
-      >
-        <div className="flex flex-col max-w-3xl mx-auto overflow-hidden rounded-lg">
+
+      {/* Craft Details */}
+      <div className="grid md:grid-cols-2 gap-8">
+        {/* Image Section */}
+        <div className="relative">
           <img
-            data-aos="zoom-in"
-            data-aos-delay="1000"
             src={craft.image}
-            alt=""
-            className="w-full h-60 sm:h-96 dark:bg-gray-500 rounded-lg"
+            alt={craft.item_name}
+            className="w-full rounded-lg shadow-lg object-cover max-h-[500px]"
           />
-          <div
-            data-aos="zoom-in"
-            data-aos-delay="1200"
-            className="p-6 pb-6 m-4 mx-auto glass -mt-16 space-y-2 lg:max-w-2xl sm:px-10 sm:mx-12 lg:rounded-md"
-          >
-            <div className="space-y-2">
-              <a
-                rel="noopener noreferrer"
-                href="#"
-                className="inline-block dark:text-gray-800 text-2xl font-semibold sm:text-3xl"
-              >
-                {craft.item_name}
-              </a>
-              <div className="flex dark:text-gray-800 font-bold gap-2 lg:gap-2 mt-2">
-                {craft.short_description}
-              </div>
-            </div>
+        </div>
 
-            <div className="dark:text-gray-800">
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-">
-                <div className="flex font-bold gap-2 lg:gap-2 mt-2">
-                  Price
-                  <span className=" text-blue-500 font-normal">
-                    {craft.price}
-                  </span>
-                </div>
-                <div className="flex font-bold gap-2 lg:gap-2 mt-2">
-                  Rating:
-                  <span className=" text-blue-500 font-normal">
-                    {craft.rating}
-                  </span>
-                </div>
-                <div className="flex font-bold gap-2 lg:gap-2 mt-2">
-                  Customization:
-                  <span className=" text-blue-500 font-normal">
-                    {craft.customization}
-                  </span>
-                </div>
-              </div>
-              <div className="flex font-bold gap-2 lg:gap-2 mt-2">
-                Subcategory Name:
-                <span className=" text-blue-500 font-normal">
-                  {craft.subcategory_name}
-                </span>
-              </div>
-              <div className="flex font-bold gap-2 lg:gap-2 mt-2">
-                Processing Time:
-                <span className=" text-blue-500 font-normal">
-                  {craft.processing_time}
-                </span>
-              </div>
+        {/* Details Section */}
+        <div className="bg-white rounded-lg shadow-lg p-6">
+          <h1 className="text-3xl font-bold mb-4 text-gray-800">
+            {craft.item_name}
+          </h1>
 
-              <p className="flex font-bold items-center gap-1 lg:gap-2">
-                <span className="">Stock Status:</span>
-                <span className="text-blue-500 font-normal">
-                  {craft.stock_status}{" "}
-                </span>
+          <p className="text-gray-600 mb-6">{craft.short_description}</p>
+
+          <div className="grid grid-cols-2 gap-4 mb-6">
+            <DetailItem
+              icon={<Star className="text-yellow-500" />}
+              label="Rating"
+              value={craft.rating}
+            />
+            <DetailItem
+              icon={<Box className="text-blue-500" />}
+              label="Stock Status"
+              value={craft.stock_status}
+            />
+            <DetailItem
+              icon={<Clock className="text-green-500" />}
+              label="Processing Time"
+              value={craft.processing_time}
+            />
+            <DetailItem
+              icon={<Palette className="text-purple-500" />}
+              label="Customization"
+              value={craft.customization}
+            />
+          </div>
+
+          <div className="flex justify-between items-center">
+            <div>
+              <span className="text-2xl font-bold text-violet-600">
+                {craft.price}
+              </span>
+              <p className="text-gray-500">
+                Subcategory: {craft.subcategory_name}
               </p>
             </div>
+            <button
+              className="bg-violet-600 text-white hover:bg-violet-700 px-6 py-3 rounded-md transition duration-300 flex items-center"
+            >
+              <ShoppingCart className="mr-2" /> Add to Cart
+            </button>
           </div>
         </div>
       </div>
     </div>
   );
 };
+
+// Helper component for detail items
+const DetailItem = ({ icon, label, value }) => (
+  <div className="flex items-center space-x-3 bg-gray-100 p-3 rounded-lg">
+    {icon}
+    <div>
+      <p className="text-sm text-gray-600">{label}</p>
+      <p className="font-semibold">{value}</p>
+    </div>
+  </div>
+);
 
 export default CraftDetails;

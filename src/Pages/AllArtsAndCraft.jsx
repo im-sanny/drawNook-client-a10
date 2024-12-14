@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import { Eye, Filter, Search } from 'lucide-react';
+import { Eye, Search } from 'lucide-react';
 
 const AllArtsAndCraft = () => {
   const loadedArts = useLoaderData();

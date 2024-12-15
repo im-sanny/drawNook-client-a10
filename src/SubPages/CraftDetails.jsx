@@ -1,11 +1,20 @@
 /* eslint-disable react/prop-types */
 import { useLoaderData, useParams } from 'react-router-dom';
 import { ShoppingCart, Star, Clock, Box, Palette } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 const CraftDetails = () => {
   const craftDetails = useLoaderData();
   const { id } = useParams();
   const craft = craftDetails.find((craftDetail) => craftDetail._id === id);
+
+  const handleOrderNow = () => {
+    toast.error('Online ordering coming soon!');
+  };
+
+  const handleAddToCart = () => {
+    toast.error('Cart feature not available yet');
+  };
 
   if (!craft) {
     return (
@@ -29,7 +38,10 @@ const CraftDetails = () => {
               DRAWNOOK
             </span>
           </div>
-          <button className="mt-4 md:mt-0 bg-white text-violet-600 hover:bg-violet-100 px-6 py-3 rounded-md transition duration-300 flex items-center">
+          <button
+            onClick={handleOrderNow}
+            className="mt-4 md:mt-0 bg-white text-violet-600 hover:bg-violet-100 px-6 py-3 rounded-md transition duration-300 flex items-center"
+          >
             <ShoppingCart className="mr-2" /> Order Now
           </button>
         </div>
@@ -87,6 +99,7 @@ const CraftDetails = () => {
               </p>
             </div>
             <button
+              onClick={handleAddToCart}
               className="bg-violet-600 text-white hover:bg-violet-700 px-6 py-3 rounded-md transition duration-300 flex items-center"
             >
               <ShoppingCart className="mr-2" /> Add to Cart

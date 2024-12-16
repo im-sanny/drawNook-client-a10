@@ -55,7 +55,7 @@ const Details = () => {
     <div className="container mx-auto px-4 py-10">
       <Toaster />
 
-      <div className="max-w-6xl mx-auto bg-white shadow-2xl rounded-2xl overflow-hidden">
+      <div className="max-w-6xl mx-auto bg-white dark:bg-gray-900 shadow-2xl rounded-2xl overflow-hidden">
         <div className="grid lg:grid-cols-2 gap-8 p-8">
           {/* Image Section */}
           <div className="relative">
@@ -75,10 +75,10 @@ const Details = () => {
           {/* Details Section */}
           <div className="space-y-6">
             <div>
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">
+              <h2 className="text-4xl font-bold mb-4">
                 {service.name}
               </h2>
-              <p className="text-gray-500 mb-4">
+              <p className=" mb-4">
                 Published on:{' '}
                 {new Date().toLocaleDateString('en-US', {
                   year: 'numeric',
@@ -86,7 +86,7 @@ const Details = () => {
                   day: 'numeric',
                 })}
               </p>
-              <p className="text-gray-700 text-lg leading-relaxed mb-6">
+              <p className="text-lg leading-relaxed mb-6">
                 {service.description}
               </p>
             </div>
